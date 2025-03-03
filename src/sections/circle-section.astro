@@ -1,0 +1,122 @@
+---
+import ContainerSection from "@/sections/container-section.astro";
+// import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const items = [
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_14.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_25.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_16.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_18.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_24.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_30.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_34.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_21.jpg",
+  "https://assets.codepen.io/2017/17_05_a_amur_leopard_2.jpg",
+];
+---
+
+<ContainerSection title={title}>
+  <div class="flex gap-36">
+    <div class="key-ideas" style={`--key-idea-count: ${items.length}`}>
+      {
+        items.map((_, index) => (
+          <div
+            style={`--index: ${index}`}
+            class="grid grid-cols-[fit-content(100%)_minmax(0,1fr)] grid-rows-[fit-content(100%)_minmax(0,1fr)] gap-2"
+          >
+            {/* <Icon name={`fa6-solid:${index + 1}`} class="size-6" /> */}
+            <h4 class=" font-bold text-2xl self-center">Lorem.ipsum</h4>
+            <div>
+              <p class="absolute w-[250px] text-zinc-600">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div>???</div>
+  </div>
+</ContainerSection>
+
+<style>
+  @keyframes spin-animation {
+    to {
+      rotate: 1turn;
+    }
+  }
+  @keyframes spin-animation-backwards {
+    to {
+      rotate: -1turn;
+    }
+  }
+
+  :root {
+    /* Technique 1: https://codepen.io/thebabydino/pen/oNbQZXZ */
+    /* Technique 2: https://css-tip.com/slow-down-rotation/ */
+    --key-idea-count: 9;
+  }
+
+  .key-ideas {
+    --magic-starting-angle: calc((-0.25 * 1.25) * (1turn / var(--key-idea-count)));
+    /* counter-clockwise rotate */
+    --start-angle: calc(-0.25turn + var(--magic-starting-angle));
+    /* Item size. */
+    --size: 8rem;
+    /* Relative spacing - how much extra space we want between images, 1 = 1 image size */
+    --spacing: 0.8;
+    --angle-in-between: 1turn / var(--key-idea-count);
+    --radius: calc(0.5 * (1 + var(--spacing)) * var(--size) / tan(0.5 * var(--angle-in-between)));
+    /* circle radius */
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    display: grid;
+    width: calc(2 * var(--radius) + var(--size));
+    /* container size */
+  }
+
+  /* .key-ideas {
+      --spin-duration: 18s;
+      --speed: 0.5;
+      --spin-animation: spin-animation linear infinite;
+      animation: 
+        var(--spin-animation) var(--spin-duration),
+        var(--spin-animation) calc(var(--spin-duration)/var(--speed)) 
+        reverse paused;
+      animation-composition: add;
+    }
+  
+    .key-ideas:hover {
+      animation-play-state: running;
+    } */
+
+  .key-ideas > div {
+    --current-angle: calc(var(--start-angle) + (var(--index) * var(--angle-in-between)));
+
+    aspect-ratio: 1;
+    grid-area: 1/1;
+    place-self: center;
+    height: var(--size);
+    width: var(--size);
+    transform: rotate(calc(var(--current-angle))) translate(var(--radius)) rotate(calc(-1 * var(--current-angle)));
+
+    /* outline: 1px red solid; */
+  }
+
+  .key-ideas > div:nth-child(1) {
+    /* border: 1px red solid; */
+  }
+
+  .key-ideas > div:nth-child(2) {
+    /* border: 1px red solid; */
+  }
+
+  .key-ideas > div > img {
+    max-width: 100%;
+    border-radius: 100%;
+  }
+</style>

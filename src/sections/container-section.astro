@@ -1,0 +1,38 @@
+---
+import { twMerge } from "tailwind-merge";
+interface Props {
+  tagline?: string;
+  title?: string;
+  bgClass?: string;
+  bgClassOverride?: (string | ((prev: string) => string));
+  containerClass?: string;
+}
+
+const defaultBgClass = "py-18 flex justify-center"
+
+const { title, tagline, bgClass, bgClassOverride, containerClass } = Astro.props;
+---
+
+<div class={
+  (typeof bgClassOverride === "function"
+    ? bgClassOverride(defaultBgClass)
+    : bgClassOverride) ?? twMerge(defaultBgClass, bgClass)
+}>
+  <!-- Width of the page -->
+  <slot name="container" class={twMerge("container gap-18", containerClass)}>
+    <section class={twMerge("container flex flex-col gap-18", containerClass)}>
+      <div class="flex flex-col gap-8">
+        {
+          tagline && (
+            <h2 class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500">
+              {tagline}
+            </h2>
+          )
+        }
+        {title && <h2 class="text-center font-extrabold text-4xl">{title}</h2>}
+      </div>
+      <!-- Section body -->
+      <slot />
+    </section>
+  </slot>
+</div>

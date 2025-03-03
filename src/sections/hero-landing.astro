@@ -1,0 +1,20 @@
+---
+import * as mainConfig from "@/config/main";
+import ContainerSection from "@/sections/container-section.astro";
+const pageConfig = mainConfig.pagesByName["about"];
+---
+
+<ContainerSection bgClassOverride="bg-slate-300">
+  <section slot="container" class="container grid grid-cols-6 grid-rows-6 bg-slate-200">
+    <div class="col-start-2 col-span-4 row-start-2 row-span-4 bg-slate-300 p-8 grid rounded-[0.5rem]">
+      <div class="flex flex-col">
+        <!-- Title & description -->
+        <h1 class="font-bold text-5xl text-center capitalize">
+          {pageConfig.name}
+        </h1>
+        <div class="size-4"></div><!-- Spacer. -->
+        <span class="text-center">{pageConfig.href}</span>
+      </div>
+    </div>
+  </section>
+</ContainerSection>

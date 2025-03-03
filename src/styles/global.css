@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --content-width: 100%;
+}
+@media (width >= 40rem /* 640px */) {
+  :root {
+    --content-width: 40rem /* 640px */;
+  }
+}
+@media (width >= 48rem /* 768px */) {
+  :root {
+    --content-width: 48rem /* 768px */;
+  }
+}
+@media (width >= 64rem /* 1024px */) {
+  :root {
+    --content-width: 64rem /* 1024px */;
+  }
+}
+@media (width >= 80rem /* 1280px */) {
+  :root {
+    --content-width: 80rem /* 1280px */;
+  }
+}
+@media (width >= 96rem /* 1536px */) {
+  :root {
+    --content-width: 96rem /* 1536px */;
+  }
+}
+body {
+  display: grid;
+  grid-template-rows:
+    [header-start] 2em
+    [header-end main-start] auto
+    [main-end footer-start] auto
+    [footer-end];
+  --gap: calc((100% - var(--content-width))/2);
+  grid-template-columns:
+    [fullbleed-start left-gap-start] var(--gap) [left-gap-end content-start] var(--content-width)
+    [content-end right-gap-start] var(--gap) [right-gap-end fullbleed-end];
+}
+body > header {
+  display: grid;
+  grid-column: header;
+  grid-row: content;
+  grid-template-rows:
+    [banner-start] auto
+    [banner-end nav-start] auto
+    [nav-end];
+  grid-template-columns: subgrid;
+}
+body > main {
+  display: grid;
+  grid-column: main;
+  grid-row: fullbleed;
+  grid-template-rows:
+    [hero-start] auto
+    [hero-end about-cards-start] auto
+    [about-cards-end services-start] auto
+    [services-end mission-start] auto
+    [mission-end];
+  grid-template-columns: subgrid;
+}
+body > footer {
+  display: grid;
+  grid-column: footer;
+  grid-row: content;
+  /* grid-templates-columns: ; */
+}

@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+import ContainerSection from "@/sections/container-section.astro";
+
+interface Props {
+  title: string;
+  cards: ReadonlyArray<{
+    icon: string,
+    title: string,
+    description: string,
+  }>;
+}
+
+const { title, cards } = Astro.props;
+---
+
+<ContainerSection title={title}>
+  <div class="flex justify-center">
+    <div class="flex flex-row gap-4">
+      {
+        cards.map((card) => (
+          <div id={`${card.title}`} class=" shadow-md w-64 p-4 flex flex-col gap-2">
+            <div class=" flex gap-4 items-center">
+              <Icon name={card.icon} title="xxx" class="size-10" />
+              <h4 class="font-bold">{card.title}</h4>
+            </div>
+
+            <div>{card.description}</div>
+
+            {false && (
+              <>
+                <hr class="bg-black border-t-2" />
+
+                <div>footer</div>
+              </>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</ContainerSection>

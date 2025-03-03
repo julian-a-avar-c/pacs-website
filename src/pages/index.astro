@@ -1,0 +1,182 @@
+---
+import * as mainConfig from "@/config/main";
+import HeroLanding from "@/sections/pages/index/hero-landing.astro";
+import Welcome from "../components/Welcome.astro";
+import Layout from "@/layouts/layout.astro";
+import CardsSection from "@/sections/cards-section.astro";
+import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
+import Footer from "@/components/layout/footer.astro";
+import Header, { toAllUpperCase } from "@/components/layout/header.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageConfig = mainConfig.pagesByName["index"];
+
+/* <Layout>
+  <Header />
+
+  <main>
+    <HeroLanding />
+
+    <!-- Start about -->
+    <CardsSection title="About" cards={pageConfig.cards} />
+    <!-- End about -->
+
+    <!-- Services -->
+    <!-- <HalfAndHalfSection
+    tagline="Services tagline"
+    title={pageConfig.services.title}
+    description={pageConfig.services.description}
+    items={pageConfig.services.items}
+  /> -->
+    <HalfAndHalfSection
+      tagline="Our services"
+      title="Innovative Solution for Complex Energy."
+      description="Our Consultancies are Cost effective and fit for purpose, providing analysis of investment and customized designed solutions."
+      imageSource="/IMG_2316.JPEG"
+      items={[
+        { icon: "fa6-solid:check", title: "Feasibility studies" },
+        { icon: "fa6-solid:check", title: "Investment ROI and payback study" },
+        {
+          icon: "fa6-solid:check",
+          title: "Equipment modular design and selection",
+        },
+        { icon: "fa6-solid:check", title: "Plant design" },
+        {
+          icon: "fa6-solid:check",
+          title: "Equipment modular design and selection",
+        },
+        { icon: "fa6-solid:check", title: "Engineer Design Review" },
+      ]}
+    />
+    <!-- End services -->
+
+    <!-- Mission -->
+    <section
+      class="text-white min-h-[50vh] grid grid-cols-1 grid-rows-2 justify-items-center"
+    >
+      <div
+        class="grid grid-cols-2 col-start-1 row-start-1 col-span-1 row-span-2"
+      >
+        <img class="size-full aspect-video object-cover" src="/IMG_2344.JPEG" />
+      </div>
+
+      <div class="bg-zinc-900 row-start-1 row-span-1 col-start-2 col-span-1"></div>
+      <div class="bg-blue-900 row-start-2 row-span-1 col-start-2 col-span-1"></div> 
+
+      <div
+        class="container 2x *:pl-18 *:py-18 grid grid-rows-2 grid-cols-2 col-start-1 row-start-1 col-span-1 row-span-2"
+      >
+        <div class="row-start-1 col-start-2 flex flex-col gap-8 self-center">
+          <h2 class="text-4xl font-bold">{pageConfig.content.mission.title}</h2>
+          <div>
+            {
+              pageConfig.content.mission.content
+                .split("\n")
+                .map((paragraph) => <p>{paragraph}</p>)
+            }
+          </div>
+        </div>
+
+        <div class="row-start-2 col-start-2 flex flex-col gap-8 self-center">
+          <h2 class="text-4xl font-bold">{pageConfig.content.vision.title}</h2>
+          <div>
+            {
+              pageConfig.content.vision.content
+                .split("\n")
+                .map((paragraph) => <p>{paragraph}</p>)
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End mission -->
+
+    <!-- Vision -->
+    <!-- <section
+      class="bg-blue-900 text-white grid grid-cols-1 grid-rows-2 *:gap-16 justify-items-center"
+    >
+      <div
+        class="grid grid-cols-2 col-start-1 row-start-1 col-span-1 row-span-1"
+      >
+        <img class="size-full aspect-video object-cover" src="IMG_2252.JPEG" />
+      </div>
+      <div
+        class="container py-18 grid grid-cols-2 col-start-1 row-start-1 col-span-1 row-span-1 min-h-[50vh] "
+      >
+        <div class="col-start-2 flex flex-col gap-8 self-center">
+          <h2 class="text-4xl font-bold">{pageConfig.content.vision.title}</h2>
+          <div>
+            {
+              pageConfig.content.vision.content
+                .split("\n")
+                .map((paragraph) => <p>{paragraph}</p>)
+            }
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End vision -->
+    <!-- Products -->
+    <HalfAndHalfSection
+      tagline="Products tagline"
+      title={pageConfig.products.title}
+      description={pageConfig.products.description}
+      imageSource=""
+      items={pageConfig.products.items}
+      reverse
+    />
+    <!-- End products -->
+
+    <!-- Key ideas -->
+    <!-- <CircleSection title="Key ideas"/> -->
+    <!-- End key ideas -->
+  </main>
+
+  <Footer />
+</Layout>
+ */
+---
+<Layout>
+  <header>
+    <div style={{ gridColumn: "content", gridRow: "banner" }}>
+      <div>{toAllUpperCase(mainConfig.site.title)}</div>
+    </div>
+    <div style={{ gridColumn: "content", gridRow: "nav" }}>
+      <div class="w-[100px]">
+        <a href="/">{mainConfig.site.shortTitle}</a>
+      </div>
+    </div>
+  </header>
+  <main></main>
+  <footer></footer>
+</Layout>
+
+<!-- <Layout>
+  <header>
+    <div style={{ gridColumn: "content", gridRow: "banner" }}>
+      <div>{toAllUpperCase(mainConfig.site.title)}</div>
+    </div>
+    <div style={{ gridColumn: "content", gridRow: "nav" }}>
+      <div class="w-[100px]">
+        <a href="/">{mainConfig.site.shortTitle}</a>
+      </div>
+    </div>
+  </header> --><!-- <main>
+    main content
+  </main>
+  <Footer /> --><!-- </Layout> -->
+  <!-- <!doctype html> -->
+<!-- <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>PACS LLC</title>
+  </head>
+  <body> -->
+
+<!-- </body>
+</html> -->

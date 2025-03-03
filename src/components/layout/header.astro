@@ -1,0 +1,78 @@
+---
+import * as mainConfig from "@/config/main";
+
+export function toAllUpperCase(s: string) {
+  return s
+    .split("")
+    .map((char) => char.toUpperCase())
+    .join("");
+}
+// TODO: Focus on SQL and `value` property later.
+// FIX: Null
+const phone = mainConfig.site.links.find((link) => link.type === "phone")!;
+const email = mainConfig.site.links.find((link) => link.type === "email")!;
+const location = mainConfig.site.links.find(
+  (link) => link.type === "location"
+)!;
+
+function toTitleCase(s: string): string {
+  let result = "";
+  if (s.length > 0) {
+    result += s.at(0)!.toUpperCase();
+  }
+  if (s.length > 1) {
+    result += s.slice(1);
+  }
+  return result;
+}
+---
+
+<header>
+  <div style={{ gridColumn: "content", gridRow: "banner" }}>
+    <div>{toAllUpperCase(mainConfig.site.title)}</div>
+  </div>
+  <div style={{ gridColumn: "content", gridRow: "nav" }}>
+    <div class="w-[100px]">
+      <a href="/">{mainConfig.site.shortTitle}</a>
+    </div>
+  </div>
+</header>
+
+<!-- <header class="flex flex-col">
+  <div
+    class="bg-indigo-700 text-white font-bold text-xs py-2 flex justify-center"
+  >
+    <div class="container flex justify-between">
+      <div>
+        {toAllUpperCase(mainConfig.site.title)}
+      </div>
+      <div class="flex gap-x-2">
+        <span>{phone.href}</span>
+        <span>{email.href}</span>
+        <span>{location.href}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="backdrop-blur-md bg-slate-50 flex justify-center">
+    <nav
+      class="container grid grid-cols-[fit-content(100%)_minmax(0,1fr)_fit-content(100%)] h-14 items-center"
+    >
+      <div class="w-[100px]">
+        <a href="/">{mainConfig.site.shortTitle}</a>
+      </div>
+      <ul class="flex gap-4">
+        {
+          mainConfig.pages.map(({ href, name }) => (
+            <li>
+              <a href={href}>{toTitleCase(name)}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <button class="bg-blue-500 text-white rounded-[0.25rem] justify-end p-2"
+        >Call Sales</button
+      >
+    </nav>
+  </div>
+</header> -->

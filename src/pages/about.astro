@@ -1,0 +1,25 @@
+---
+import Footer from "@/components/layout/footer.astro";
+import Header from "@/components/layout/header.astro";
+import HeroLanding from "@/sections/hero-landing.astro";
+import * as mainConfig from "@/config/main";
+import Layout from "@/layouts/layout.astro";
+import PeopleSection from "@/sections/people-section.astro";
+
+// import PeopleSection from "@/sections/people-section.astro";
+// import { Icon } from "astro-icon/components";
+
+const pageConfig = mainConfig.pagesByName["about"];
+---
+
+<Layout title="About">
+  <Header />
+
+  <main>
+    <HeroLanding />
+
+    <PeopleSection title="Our team" people={pageConfig.people} />
+  </main>
+
+  <Footer />
+</Layout>

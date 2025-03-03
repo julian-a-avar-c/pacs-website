@@ -1,0 +1,43 @@
+---
+// import type { Person } from "@/config/main";
+import ContainerSection from "@/sections/container-section.astro";
+
+interface Props {
+  title: string;
+  people: ReadonlyArray<{
+    image: string,
+    name: string,
+    title: string,
+    bio: string,
+    links: { type: string, href: string, }[],
+  }>;
+}
+
+const { title, people } = Astro.props;
+---
+
+<ContainerSection title={title}>
+  <div class="flex justify-center">
+    <div class="flex flex-row gap-4">
+      {
+        people.map((person) => (
+          <div class=" shadow-md w-64 p-4 flex flex-col gap-2">
+            <div class=" flex gap-4">
+              <img src={person.image} class="size-10 self-center rounded-full" />
+              <div class="flex flex-col">
+                <h4 class="font-bold text-lg">{person.name}</h4>
+                <h5 class="font-bold col-start-2 text-sm text-zinc-600">{person.title}</h5>
+              </div>
+            </div>
+
+            <div>{person.bio}</div>
+
+            <hr class="bg-black border-t-2" />
+
+            <div>{/* TODO: Put links here. */}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</ContainerSection>
