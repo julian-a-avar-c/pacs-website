@@ -1,0 +1,59 @@
+---
+import { twMerge } from "tailwind-merge";
+
+type Props = {
+  imageSource: string;
+  title: string;
+  shortDate: { day: string; month: string };
+  longDate: string;
+  author: string;
+  authorImageSource: string;
+  description: string;
+  readMoreHref: string;
+};
+
+const {
+  imageSource,
+  title,
+  shortDate,
+  longDate,
+  author,
+  authorImageSource,
+  description,
+  readMoreHref,
+} = Astro.props;
+---
+
+<div
+  class="bg-zinc-200/20 backdrop-brightness-120 backdrop-filter backdrop-blur-md rounded-2xl max-w-96 flex flex-col relative shadow-md"
+>
+  <div
+    class="bg-zinc-900 aspect-square w-[2.5rem] text-white grid grid-rows-2 items-center justify-center p-1 rounded-full absolute right-4 top-4 flex-none"
+  >
+    <div class="text-lg pt-[0.25rem]">{shortDate.day}</div>
+    <div class="text-xs -mt-[0.25rem]">{shortDate.month}</div>
+  </div>
+  <img
+    alt=""
+    src={imageSource}
+    class="aspect-video w-full object-cover row-[image] col-[card] rounded-t-2xl flex-none"
+  />
+  <div class="p-6 text-lg flex flex-col gap-4 grow">
+    <div class="flex flex-col gap-2 flex-none">
+      <h4 class="font-bold text-center text-2xl">
+        {title}
+      </h4>
+      <div class="flex justify-between text-base font-extralight">
+        <div class="flex items-center gap-4">
+          <img src={authorImageSource} class="size-8 rounded-full border-zinc-300" />
+          <p class="">{author}</p>
+        </div>
+        <p class="self-center">{longDate}</p>
+      </div>
+    </div>
+    <p class="flex-none">
+      {description}
+    </p>
+    <p class="grow flex justify-end underline items-end"><a href="">read more</a></p>
+  </div>
+</div>

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Atkinson Hyperlegible Next', 'sans-serif';/* , 'Inter', 'sans-serif'; */
+}
+
 :root {
   --content-width: 100%;
 }
@@ -29,6 +33,72 @@
   }
 }
 body {
+  position: relative;
+  display: grid;
+  grid-template-rows:
+    [header-start] auto
+    [header-end main-start] auto
+    [main-end footer-start] auto
+    [footer-end];
+  --gap: calc((100% - var(--content-width)) / 2);
+  grid-template-columns:
+    [fullbleed-start leftbleed-start left-gap-start] 1fr
+    [left-gap-end content-start left-content-start]
+    /* calc(var(--content-width) / 2) */
+    repeat(6, calc(var(--content-width) / 12))
+    [left-content-end leftbleed-end rightbleed-start right-content-start]
+    /* calc(var(--content-width) / 2) */
+    repeat(6, calc(var(--content-width) / 12))
+    [right-content-end content-end right-gap-start] 1fr
+    [right-gap-end rightbleed-end fullbleed-end];
+  /* background-color: #babdbb; */
+}
+
+body > header {
+  z-index: 20;
+  grid-row: header;
+  grid-column: fullbleed;
+  position: relative;
+  /* position: sticky;
+  top: 0; */
+
+  display: grid;
+  /* display: flex;
+  flex-direction: column; */
+  /* grid-column-start: header-start; */
+  /* grid-column-end: header-end; */
+  /* grid-row-start: content-start; */
+  /* grid-row-end: content-end; */
+  /* grid-row: content; */
+  grid-template-rows:
+    [banner-start] auto
+    [banner-end nav-start] auto
+    [nav-end];
+  grid-template-columns: subgrid;
+  z-index: 100;
+  /* border-radius: 0.5rem; */
+  background-color: transparent;
+  /* position: sticky; */
+}
+/* body > header:nth-child(0) {
+  grid-row: banner;
+  grid-column: fullbleed-start / fullbleed-end;
+} */
+/* body > header:nth-child(1) {
+  grid-row: nav;
+  grid-column-start: content-start;
+  grid-column-end: content-end;
+} */
+
+
+body > footer {
+  grid-column: fullbleed;
+  grid-row: footer;
+  /* display: grid; */
+  /* grid-templates-columns: ; */
+}
+
+/* body {
   display: grid;
   grid-template-rows:
     [header-start] 2em
@@ -66,5 +136,5 @@ body > footer {
   display: grid;
   grid-column: footer;
   grid-row: content;
-  /* grid-templates-columns: ; */
-}
+  /* grid-templates-columns: ; 
+} */

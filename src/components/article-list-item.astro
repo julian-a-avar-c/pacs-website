@@ -1,0 +1,80 @@
+---
+import { twMerge } from "tailwind-merge";
+
+type Props = {
+  imageSource: string;
+  title: string;
+  shortDate: { day: string; month: string };
+  longDate: string;
+  author: string;
+  description: string;
+  readMoreHref: string;
+};
+
+const {
+  imageSource,
+  title,
+  shortDate,
+  longDate,
+  author,
+  description,
+  readMoreHref,
+} = Astro.props;
+---
+
+<a
+  href={readMoreHref}
+  class="col-[article-item] grid grid-cols-subgrid shadow-md rounded-xl gap-4 hover:backdrop-brightness-105 ring-0 hover:ring ring-zinc-800/20 hover:shadow-lg"
+>
+  <img
+    alt=""
+    src={imageSource}
+    class="aspect-square w-full object-cover rounded-l-xl col-[image]"
+  />
+  <div class="col-[content] grid grid-cols-subgrid py-4 pr-4">
+    <div class="col-[header] flex flex-col">
+      <div class="font-bold text-xl">{title}</div>
+      <div class="flex font-extralight gap-2">
+        <div>{author}</div>
+        <div>&middot;</div>
+        <div>{longDate}</div>
+      </div>
+    </div>
+    <div class="col-[rest] self-center text-lg flex flex-col h-full">
+      <p class="text-ellipsis grow">
+        {description}
+      </p>
+    </div>
+  </div>
+</a>
+
+<!-- <div
+  class="bg-zinc-200/20 backdrop-brightness-120 backdrop-filter backdrop-blur-md rounded-2xl max-w-96 flex flex-col relative shadow-md"
+>
+  <div
+    class="bg-zinc-900 aspect-square w-[2.5rem] text-white grid grid-rows-2 items-center justify-center p-1 rounded-full absolute right-4 top-4 flex-none"
+  >
+    <div class="text-lg pt-[0.25rem]">{shortDate.day}</div>
+    <div class="text-xs -mt-[0.25rem]">{shortDate.month}</div>
+  </div>
+  <img
+    alt=""
+    src={imageSource}
+    class="aspect-video w-full object-cover row-[image] col-[card] rounded-t-2xl flex-none"
+  />
+  <div class="p-6 text-lg flex flex-col gap-4 grow">
+    <div class="flex flex-col gap-2 flex-none">
+      <h4 class="font-bold text-center text-2xl">
+        {title}
+      </h4>
+      <div class="flex justify-between text-base">
+        <p>{author}</p>
+        <p>{longDate}</p>
+      </div>
+    </div>
+    <p class="flex-none">
+      {description}
+    </p>
+    <p class="grow flex justify-end underline items-end"><a href="">read more</a></p>
+  </div>
+</div> -->

@@ -1,22 +1,63 @@
 ---
 // import type { Person } from "@/config/main";
 import ContainerSection from "@/sections/container-section.astro";
+import * as mainConfig from "@/config/main";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
   people: ReadonlyArray<{
-    image: string,
-    name: string,
-    title: string,
-    bio: string,
-    links: { type: string, href: string, }[],
+    image: string;
+    name: string;
+    title: string;
+    bio: string;
+    links: { type: string; href: string }[];
   }>;
 }
 
 const { title, people } = Astro.props;
 ---
 
-<ContainerSection title={title}>
+<section class="col-[content] flex flex-col gap-18 items-center">
+  <h3 class="font-bold text-4xl">{title}</h3>
+  <div class="flex gap-x-14">
+    {
+      people.map((person) => (
+        <div class="shadow-md min-w-80 max-w-96 p-6 flex flex-col gap-6 rounded-lg h-fit">
+          <div class="flex gap-6 items-center">
+            <img src={person.image} class="size-20 self-center rounded-full border-zinc-300 border-2" />
+            <div class="flex flex-col">
+              <h4 class="font-bold text-2xl">{person.name}</h4>
+              <h5 class="font-bold col-start-2 text-md text-zinc-600">
+                {person.title}
+              </h5>
+            </div>
+          </div>
+  
+          <div>{person.bio}</div>
+  
+          <hr class="border-zinc-300 border-t-1" />
+  
+          <div class="flex gap-2 justify-end">
+            {person.links.map((link) =>
+              <a href={link.href}>
+                {
+                  link.type === "phone" ? <Icon name="fa6-solid:phone"/> :
+                  link.type === "email" ? <Icon name="fa6-solid:envelope"/> :
+                  link.type === "linkedin" ? <Icon name="fa6-brands:linkedin"/> :
+                  link.type === "instagram" ? <Icon name="fa6-brands:instagram"/> :
+                  <Icon name="fa6-solid:link"/>
+                }
+              </a>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- <ContainerSection title={title}>
   <div class="flex justify-center">
     <div class="flex flex-row gap-4">
       {
@@ -40,4 +81,4 @@ const { title, people } = Astro.props;
       }
     </div>
   </div>
-</ContainerSection>
+</ContainerSection> -->

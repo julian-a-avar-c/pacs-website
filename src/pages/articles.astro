@@ -1,0 +1,47 @@
+---
+import * as mainConfig from "@/config/main";
+import HeroLanding from "@/sections/hero-landing.astro";
+import Welcome from "../components/Welcome.astro";
+import Layout from "@/layouts/layout.astro";
+import CardsSection from "@/sections/cards-section.astro";
+import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
+import Footer from "@/components/layout/footer.astro";
+import Header, { toAllUpperCase } from "@/components/layout/header.astro";
+import { Icon } from "astro-icon/components";
+import PeopleSection from "@/sections/people-section.astro";
+import BannerCard from "@/components/article-banner-card.astro";
+import ArticlesSection from "@/sections/pages/articles/articles-section.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageConfig = mainConfig.pagesByName["articles"];
+---
+
+<Layout>
+  <Header />
+
+  <main class="gap-y-26">
+    <HeroLanding name={pageConfig.name} href={pageConfig.href} />
+
+    <ArticlesSection />
+
+    <Footer class="bg-zinc-900 text-white py-36" />
+  </main>
+</Layout>
+
+<style>
+  body > main {
+    z-index: 10;
+    display: grid;
+    grid-row: main;
+    grid-column: fullbleed;
+    grid-template-rows:
+      [hero-start] auto
+      [hero-end story-start] auto
+      [story-end stats-start] auto
+      [stats-end team-start] auto
+      [team-end articles-start] auto
+      [articles-end];
+    grid-template-columns: subgrid;
+  }
+</style>

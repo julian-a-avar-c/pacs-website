@@ -1,20 +1,65 @@
 ---
+import type { PagesByName } from "@/config/main";
 import * as mainConfig from "@/config/main";
 import ContainerSection from "@/sections/container-section.astro";
-const pageConfig = mainConfig.pagesByName["about"];
+import { twMerge } from "tailwind-merge";
+// const pageConfig = mainConfig.pages.byName.index;
+
+interface Props {
+  name: string;
+  href: string | { name: string; href?: string }[];
+}
+
+function* intersperse<A, B>(array: A[], delim: B) {
+  let first = true;
+  for (const x of array) {
+    if (!first) yield delim;
+    first = false;
+    yield x;
+  }
+}
+
+const { name, href } = Astro.props;
 ---
 
-<ContainerSection bgClassOverride="bg-slate-300">
-  <section slot="container" class="container grid grid-cols-6 grid-rows-6 bg-slate-200">
-    <div class="col-start-2 col-span-4 row-start-2 row-span-4 bg-slate-300 p-8 grid rounded-[0.5rem]">
-      <div class="flex flex-col">
-        <!-- Title & description -->
-        <h1 class="font-bold text-5xl text-center capitalize">
-          {pageConfig.name}
-        </h1>
-        <div class="size-4"></div><!-- Spacer. -->
-        <span class="text-center">{pageConfig.href}</span>
-      </div>
+<section
+  class="col-[fullbleed] grid grid-cols-subgrid bg-[url(/IMG_2304-1.JPEG)] bg-fixed bg-no-repeat bg-cover bg-[center_20%]"
+>
+  <div class="grid col-[content] bg-zinc-800/40 grid-cols-6 grid-rows-6">
+    <div
+      class="col-start-2 col-span-4 row-start-2 row-span-4 bg-zinc-200/25 backdrop-brightness-120 backdrop-filter backdrop-blur-lg p-12 gap-4 rounded-[0.5rem] flex flex-col gap-y-4 shadow-md"
+    >
+      <h1 class="font-bold text-5xl text-center capitalize">
+        {name}
+      </h1>
+      {
+        href && (
+          <p class="text-center flex justify-center gap-1">
+            {typeof href === "string" ? (
+              <>
+                <span>/</span>
+                {href.split("/")}
+              </>
+            ) : (
+              <>
+                <span>/</span>
+                {intersperse(
+                  href.map(({ name, href }) =>
+                    href ? (
+                      <a href={href} class="hover:underline">
+                        {name}
+                      </a>
+                    ) : (
+                      <span>{name}</span>
+                    )
+                  ),
+                  <span>/</span>
+                )}
+              </>
+            )}
+          </p>
+        )
+      }
     </div>
-  </section>
-</ContainerSection>
+  </div>
+</section>

@@ -1,43 +1,38 @@
 ---
+import { twMerge } from "tailwind-merge";
 
+
+const { class: className } = Astro.props;
 ---
 
-<footer class="bg-slate-200">
-    <div class="container grid grid-cols-4">
-      <div>
-        <div>item 1</div>
-        <div>item 2</div>
-        <div>item 3</div>
-        <div>item 4</div>
-        <div>item 5</div>
-        <div>item 6</div>
-        <div>item 7</div>
-        <div>item 8</div>
-      </div>
-      <div>
-        <div>item 1</div>
-        <div>item 2</div>
-        <div>item 3</div>
-        <div>item 4</div>
-        <div>item 5</div>
-        <div>item 6</div>
-        <div>item 7</div>
-        <div>item 8</div>
-      </div>
-      <div>
-        <div>item 1</div>
-        <div>item 2</div>
-        <div>item 3</div>
-        <div>item 4</div>
-        <div>item 5</div>
-        <div>item 6</div>
-        <div>item 7</div>
-        <div>item 8</div>
-      </div>
-      <div class="grid grid-cols-2 *:h-fit">
-        <input type="text" />
-        <button>Subscribe</button>
-      </div>
+<footer class={twMerge("col-[fullbleed] grid grid-cols-subgrid bg-zinc-200", className)}>
+  <div class="col-[content] grid grid-cols-4">
+    <div class="flex flex-col gap-0.5">
+      <div>Pages</div>
+      <div>Home</div>
+      <div>About</div>
+      <div>Products</div>
+      <div>Services</div>
     </div>
-  </footer>
-  
+    <div class="flex flex-col gap-0.5">
+      <div>LinkedIn</div>
+      <div>Instagram</div>
+      <div>Email</div>
+      <div>Phone Number</div>
+    </div>
+    <div class="flex flex-col gap-0.5">
+      <div>item 1</div>
+      <div>item 2</div>
+      <div>item 3</div>
+      <div>item 4</div>
+      <div>item 5</div>
+      <div>item 6</div>
+      <div>item 7</div>
+      <div>item 8</div>
+    </div>
+    <div class="grid grid-cols-2 *:h-fit">
+      <input type="text" />
+      <button>Subscribe</button>
+    </div>
+  </div>
+</footer>

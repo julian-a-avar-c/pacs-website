@@ -1,0 +1,130 @@
+---
+import * as mainConfig from "@/config/main";
+import HeroLanding from "@/sections/hero-landing.astro";
+import Layout from "@/layouts/layout.astro";
+import CardsSection from "@/sections/cards-section.astro";
+import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
+import Footer from "@/components/layout/footer.astro";
+import Header, { toAllUpperCase } from "@/components/layout/header.astro";
+import { Icon } from "astro-icon/components";
+import PeopleSection from "@/sections/people-section.astro";
+import BannerCard from "@/components/article-banner-card.astro";
+import ArticlesSection from "@/sections/pages/articles/articles-section.astro";
+import { Tweet, Vimeo, YouTube } from "astro-embed";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageConfig = mainConfig.pagesByName["articles"];
+
+export function getStaticPaths() {
+  return [
+    { params: { article: "2024-09-30-ilma-2024" } },
+    { params: { article: "2024-06-10-nlgi-2024" } },
+    { params: { article: "2024-03-31-sustainable-challanges" } },
+    { params: { article: "2024-03-15-lubricant-expo-2024" } },
+  ];
+}
+
+// const articles = Object.fromEntries(pageConfig.data.map(article => [article.href.split("/").at(-1), article]))
+
+const { article } = Astro.params;
+
+const articleData = pageConfig.data.find((a) => a.href.includes(article))!;
+---
+
+<!-- <section class="col-[content] flex flex-col gap-16">
+  {title && <h2 class="text-center font-extrabold text-4xl">{title}</h2>}
+  
+  <div class="flex self-center gap-12">
+    {
+      cards.map((card) => (
+        <div id={`${card.title}`} class=" w-96 rounded-lg shadow-md p-8 flex flex-col gap-2">
+          <div class="text-2xl flex gap-4 items-center">
+            <Icon name={card.icon} title="xxx" class="size-10" />
+            <h4 class="font-bold">{card.title}</h4>
+          </div>
+  
+          <div class="text-lg">{card.description}</div>
+  
+          {false && (
+            <hr class="bg-black border-t-2" />
+
+            <div>footer</div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section> -->
+<Layout>
+  <Header />
+
+  <main class="gap-y-26">
+    <HeroLanding
+      name="articles"
+      href={[
+        { name: "articles", href: pageConfig.href },
+        { name: articleData.name, href: articleData.href },
+      ]}
+    />
+
+    <article class:list={["col-[content] flex justify-center"]}>
+      <div
+        class:list={[
+          "max-w-[80em] grid grid-cols-1 gap-18",
+          { "grid-cols-2": articleData.contentImageSource },
+        ]}
+      >
+        <h2
+          class:list={[
+            "text-center font-extrabold text-4xl",
+            { " col-span-2": articleData.contentImageSource },
+          ]}
+        >
+          {articleData.title}
+        </h2>
+        <div class="flex flex-col gap-16">
+          <div class="flex gap-4 items-center text-xl font-semibold">
+            <img
+              src={articleData.authorImageSource}
+              class="size-8 rounded-full border-zinc-300"
+            />
+            <p class="">{articleData.author} &middot; {articleData.longDate}</p>
+          </div>
+          <!-- <YouTube id="https://youtu.be/sqCxLhu8CbI"/> -->
+          <div
+            class="text-lg [&_ol]:list-decimal [&_ul]:list-disc [&_a]:underline [&_ol]:list-inside [&_ul]:list-inside flex flex-col gap-4"
+          >
+            <Fragment set:html={articleData.content} />
+          </div>
+        </div>
+        <!-- <div> -->
+        {
+          articleData.contentImageSource && (
+            <img src={articleData.contentImageSource} class="border-zinc-300" />
+          )
+        }
+        <!-- </div> -->
+      </div>
+    </article>
+
+    <Footer class="bg-zinc-900 text-white py-36" />
+  </main>
+</Layout>
+
+<style>
+  body > main {
+    z-index: 10;
+    display: grid;
+    grid-row: main;
+    grid-column: fullbleed;
+    grid-template-rows:
+      [hero-start] auto
+      [hero-end story-start] auto
+      [story-end stats-start] auto
+      [stats-end team-start] auto
+      [team-end articles-start] auto
+      [articles-end];
+    grid-template-columns: subgrid;
+  }
+</style>

@@ -1,25 +1,116 @@
 ---
-import Footer from "@/components/layout/footer.astro";
-import Header from "@/components/layout/header.astro";
-import HeroLanding from "@/sections/hero-landing.astro";
 import * as mainConfig from "@/config/main";
+import HeroLanding from "@/sections/hero-landing.astro";
+import Welcome from "../components/Welcome.astro";
 import Layout from "@/layouts/layout.astro";
+import CardsSection from "@/sections/cards-section.astro";
+import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
+import Footer from "@/components/layout/footer.astro";
+import Header, { toAllUpperCase } from "@/components/layout/header.astro";
+import { Icon } from "astro-icon/components";
 import PeopleSection from "@/sections/people-section.astro";
+import ArticleBannerCard from "@/components/article-banner-card.astro";
+import ArticlesSection from "@/sections/articles-section.astro";
 
-// import PeopleSection from "@/sections/people-section.astro";
-// import { Icon } from "astro-icon/components";
-
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 const pageConfig = mainConfig.pagesByName["about"];
 ---
 
-<Layout title="About">
+<Layout>
   <Header />
 
-  <main>
-    <HeroLanding />
+  <main class="gap-y-26">
+    <HeroLanding name={pageConfig.name} href={pageConfig.href} />
 
-    <PeopleSection title="Our team" people={pageConfig.people} />
+    <section class="col-[content] flex justify-center">
+      <div class="w-[80%] grid grid-cols-[1fr_2fr] gap-x-18">
+        <div class="">
+          <img
+            alt=""
+            class="rounded-xl aspect-[9_/_16] object-cover shadow-md"
+            src="IMG_2172.JPEG"
+          />
+        </div>
+        <div class="flex flex-col gap-6">
+          <h3 class="font-bold text-4xl text-center">Our Story</h3>
+          <p class="text-lg text-justify">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto
+            ipsam sunt neque, rem incidunt corrupti dolore ad animi. Quod,
+            dolorem rerum sunt consequuntur fugiat in libero eveniet? Velit,
+            doloremque iure.
+          </p>
+          <p class="text-lg text-justify">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto
+            ipsam sunt neque, rem incidunt corrupti dolore ad animi. Quod,
+            dolorem rerum sunt consequuntur fugiat in libero eveniet? Velit,
+            doloremque iure. Lorem, ipsum dolor sit amet consectetur adipisicing
+            elit. Architecto ipsam sunt neque, rem incidunt corrupti dolore ad
+            animi. Quod, dolorem rerum sunt consequuntur fugiat in libero
+            eveniet? Velit, doloremque iure.
+          </p>
+          <p class="text-lg text-justify">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto
+            ipsam sunt neque, rem incidunt corrupti dolore ad animi. Quod,
+            dolorem rerum sunt consequuntur fugiat in libero eveniet? Velit,
+            doloremque iure.
+          </p>
+          <p class="text-lg text-right pt-8 pr-8">
+            &mdash; Pablo Garce, President
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="col-[content] flex justify-evenly">
+      <div
+        class="w-[90%] h-72 bg-[url('IMG_2344.JPEG')] bg-fixed bg-no-repeat bg-cover bg-[center_10%] grid items-center place-items-center grid-cols-4"
+      >
+        <div class="px-16 self-center text-center">
+          <span>We build </span>
+          <span class="italic">trust</span>
+          <span> with</span>
+          <br />
+          <span>our </span>
+          <span class="italic">hard</span>
+          <span class="underline"> work</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-6xl font-bold">99+</span>
+          <span class="text-xl font-medium">projects</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-6xl font-bold">45+</span>
+          <span class="text-xl font-medium">experts</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-6xl font-bold">2+</span>
+          <span class="text-xl font-medium">offices</span>
+        </div>
+      </div>
+    </section>
+
+    <PeopleSection title="Our Team" people={pageConfig.people} />
+
+    <ArticlesSection />
+
+    <Footer class="bg-zinc-900 text-white py-36" />
   </main>
-
-  <Footer />
 </Layout>
+
+<style>
+  body > main {
+    z-index: 10;
+    display: grid;
+    grid-row: main;
+    grid-column: fullbleed;
+    grid-template-rows:
+      [hero-start] auto
+      [hero-end story-start] auto
+      [story-end stats-start] auto
+      [stats-end team-start] auto
+      [team-end articles-start] auto
+      [articles-end];
+    grid-template-columns: subgrid;
+  }
+</style>

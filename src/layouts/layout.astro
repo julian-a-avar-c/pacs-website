@@ -1,5 +1,19 @@
 ---
 import "@/styles/global.css";
+import '@fontsource/atkinson-hyperlegible-next/200.css';
+import '@fontsource/atkinson-hyperlegible-next/300.css';
+import '@fontsource/atkinson-hyperlegible-next/400.css';
+import '@fontsource/atkinson-hyperlegible-next/500.css';
+import '@fontsource/atkinson-hyperlegible-next/600.css';
+import '@fontsource/atkinson-hyperlegible-next/700.css';
+import '@fontsource/atkinson-hyperlegible-next/800.css';
+import '@fontsource/atkinson-hyperlegible-next/200-italic.css';
+import '@fontsource/atkinson-hyperlegible-next/300-italic.css';
+import '@fontsource/atkinson-hyperlegible-next/400-italic.css';
+import '@fontsource/atkinson-hyperlegible-next/500-italic.css';
+import '@fontsource/atkinson-hyperlegible-next/600-italic.css';
+import '@fontsource/atkinson-hyperlegible-next/700-italic.css';
+import '@fontsource/atkinson-hyperlegible-next/800-italic.css';
 import * as mainConfig from "@/config/main";
 
 interface Props {
@@ -20,7 +34,7 @@ const documentTitle = mainConfig.site.shortTitle + (title === undefined ? "" : `
     <meta name="generator" content={Astro.generator} />
     <title>{documentTitle}</title>
   </head>
-  <body>
+  <body class="bg-zinc-200 text-black">
     <slot />
   </body>
 </html>

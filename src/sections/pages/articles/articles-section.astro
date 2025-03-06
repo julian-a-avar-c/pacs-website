@@ -1,0 +1,46 @@
+---
+import ArticleBannerCard from "@/components/article-banner-card.astro";
+import ArticleListItem from "@/components/article-list-item.astro";
+import * as mainConfig from "@/config/main";
+import { Icon } from "astro-icon/components";
+
+const pageConfig = mainConfig.pagesByName["articles"];
+---
+
+<!-- List -->
+<section style={{
+  gridTemplateColumns: "[article-item-start image-start] 8rem [image-end content-start header-start] 18rem [header-end rest-start] auto [rest-end content-end article-item-end]"
+}} class="col-[content] grid gap-4 [&>*]:h-[8rem]">
+  {
+    pageConfig.data.map((article) => (
+      <ArticleListItem
+        imageSource={article.overview.imageSource}
+        title={article.title}
+        shortDate={article.shortDate}
+        longDate={article.longDate}
+        author={article.author}
+        description={article.overview.summary}
+        readMoreHref={article.href}
+      />
+    ))
+  }
+</section>
+
+<!-- Cards -->
+<!-- <section
+  class="col-[content] grid grid-cols-4 gap-16"
+>
+  {
+    pageConfig.data.map((article) => (
+      <BannerCard
+        imageSource={article.overview.imageSource}
+        title={article.title}
+        shortDate={article.shortDate}
+        longDate={article.longDate}
+        author={article.author}
+        description={article.overview.summary}
+        readMoreHref={article.href}
+      />
+    ))
+  }
+</section> -->

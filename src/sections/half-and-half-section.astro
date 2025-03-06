@@ -20,13 +20,11 @@ const { title, tagline, description, imageSource, items, reverse } =
   Astro.props;
 ---
 
-<!-- <ContainerSection
-  bgClassOverride={(bgClass) => twMerge(bgClass, "bg-slate-300 py-0 bg-[url(/IMG_2304-1.JPEG)] bg-no-repeat bg-cover bg-[center_20%]")}
-> --><!-- <div
-    slot="container"
-    class="container grid grid-cols-6 grid-rows-6 bg-slate-800/10"
-  > -->
-<ContainerSection tagline={tagline} containerClass="gap-4">
+<section class="col-[content] flex flex-col gap-8">
+  <h2 class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500">
+    {tagline}
+  </h2>
+
   <div class="grid grid-cols-2 gap-x-10">
     <!--
       Using `h-full` because `aspect-video` and `object-cover` together are not enough, since `aspect-ratio` is a weak CSS property.
@@ -69,4 +67,55 @@ const { title, tagline, description, imageSource, items, reverse } =
       </ul>
     </div>
   </div>
-</ContainerSection>
+</section>
+
+<!-- <ContainerSection
+  bgClassOverride={(bgClass) => twMerge(bgClass, "bg-zinc-300 py-0 bg-[url(/IMG_2304-1.JPEG)] bg-no-repeat bg-cover bg-[center_20%]")}
+> --><!-- <div
+    slot="container"
+    class="container grid grid-cols-6 grid-rows-6 bg-zinc-800/10"
+  > -->
+<!-- <ContainerSection tagline={tagline} containerClass="gap-4">
+  <div class="grid grid-cols-2 gap-x-10"> -->
+    <!--
+      Using `h-full` because `aspect-video` and `object-cover` together are not enough, since `aspect-ratio` is a weak CSS property.
+      @see https://stackoverflow.com/questions/70159006/css-aspect-ratio-not-working-properly-in-firefox
+    -->
+    <!-- <img
+      alt=""
+      class={twMerge(
+        "rounded-xl h-full aspect-video object-cover",
+        reverse ? "col-start-2" : null
+      )}
+      src={imageSource}
+    />
+    <div class="flex flex-col gap-4">
+      <h3 class="font-bold text-2xl">{title}</h3>
+      <div class="flex flex-col gap-2">
+        {description.split("\n").map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <ul class="flex flex-col">
+        {
+          items.map((item) => (
+            <li class="grid grid-cols-[fit-content(100%)_1fr]  grid-rows-[fit-content(100%)_1fr] gap-2">
+              <Icon
+                name={item.icon}
+                title={item.title}
+                class="size-8 aspect-square"
+              />
+              <h4 class="font-bold self-center">{item.title}</h4>
+              {item.description && (
+                <div class="flex flex-col gap-4 col-start-2 text-zinc-600 pb-4">
+                  {item.description.split("\n").map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</ContainerSection> -->
