@@ -23,6 +23,24 @@ export type Page = {
   title?: string;
 };
 
+export type Pages = (
+  | PageIndex
+  | PageAbout
+  | (Page & { name: "products" })
+  | (Page & { name: "services" })
+  | PageArticles
+)[];
+
+export type PageNames = Pages[number]["name"];
+
+export type PagesByName = {
+  index: PageIndex;
+  about: PageAbout;
+  products: Page & { name: "products" };
+  services: Page & { name: "services" };
+  articles: PageArticles;
+};
+
 type PageIndex = Page & {
   name: "index";
   landingHero: {
@@ -75,6 +93,7 @@ type PageArticles = Page & {
     content: string;
     shortDate: { day: string; month: string };
     longDate: string;
+    completeDate: string;
   }[];
 };
 
@@ -176,6 +195,7 @@ const pageIndex: PageIndex = {
     ],
   },
 }; // pageIndex
+
 const pageAbout: PageAbout = {
   name: "about",
   href: "/about",
@@ -212,22 +232,20 @@ const pageAbout: PageAbout = {
     },
   ],
 }; // pageAbout
+
 const pageArticles: PageArticles = {
   name: "articles",
   href: "/articles",
   title: "Articles",
   data: [
     {
-      // { params: { article: "2024-09-30-ilma-2024" }},
-      // { params: { article: "2024-06-10-nlgi-2024" }},
-      // { params: { article: "2024-03-31-sustainable-challanges" }},
-      // { params: { article: "2024-03-15-lubricant-expo-2024" }},
       overview: {
         imageSource: "/ilma.jpeg",
         summary: "description",
       },
       name: "ilma-2024",
       href: "/articles/2024-09-30-ilma-2024",
+      completeDate: "2024-09-30",
       title: "ILMA 2024",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
@@ -243,10 +261,13 @@ const pageArticles: PageArticles = {
       },
       name: "nlgi-2024",
       href: "/articles/2024-06-10-nlgi-2024",
+      completeDate: "2024-06-10",
       title: "NLGI 2024",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
       contentImageSource: "/NLGI-1.jpg",
+      shortDate: { day: "10", month: "Jun" },
+      longDate: "June 10th, 2024",
       content: `
         <p>Join us at the National Lubricating Grease Institute Annual Meeting in San Antonio!</p>
         <p>We are delighted to announce that our expert, Pablo Garce, will present three essential talks at the National Lubricating Grease Institute Annual Meeting.</p>
@@ -264,8 +285,6 @@ const pageArticles: PageArticles = {
         <a href="https://www.instagram.com/pacs_llc/">https://www.instagram.com/pacs_llc/</a>
         <a href="https://www.linkedin.com/company/pacsllc/">https://www.linkedin.com/company/pacsllc/</a>
       `,
-      shortDate: { day: "10", month: "Jun" },
-      longDate: "June 10th, 2024",
     },
     {
       overview: {
@@ -275,6 +294,7 @@ const pageArticles: PageArticles = {
       },
       name: "sustainable-challanges",
       href: "/articles/2024-03-31-sustainable-challanges",
+      completeDate: "2024-03-31",
       title: "Navigating Challenges with Sustainable Solutions",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
@@ -302,6 +322,7 @@ const pageArticles: PageArticles = {
       },
       name: "lubricant-expo-2024",
       href: "/articles/2024-03-15-lubricant-expo-2024",
+      completeDate: "2024-03-15",
       title: "Lubricant Expo 2024",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
@@ -329,24 +350,6 @@ const pageArticles: PageArticles = {
     },
   ],
 }; // pageArticles
-
-export type Pages = (
-  | PageIndex
-  | PageAbout
-  | (Page & { name: "products" })
-  | (Page & { name: "services" })
-  | PageArticles
-)[];
-
-export type PageNames = Pages[number]["name"];
-
-export type PagesByName = {
-  index: PageIndex;
-  about: PageAbout;
-  products: Page & { name: "products" };
-  services: Page & { name: "services" };
-  articles: PageArticles;
-};
 
 export const pages: Pages = [
   pageIndex,

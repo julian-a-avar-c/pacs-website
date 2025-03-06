@@ -1,14 +1,16 @@
 {
-  "name": "",
+  "name": "pacs-website",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "start": "npm run build && node run-server.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.1.2",
     "@astrojs/react": "^4.2.0",
     "@fontsource/atkinson-hyperlegible-next": "^5.2.1",
     "@iconify-json/fa6-brands": "^1.2.5",
@@ -22,6 +24,7 @@
     "astro-icon": "^1.1.5",
     "autoprefixer": "^10.4.20",
     "cssnano": "^7.0.6",
+    "express": "^4.21.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.1",
