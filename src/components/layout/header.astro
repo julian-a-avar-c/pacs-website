@@ -7,6 +7,12 @@ export function toAllUpperCase(s: string) {
     .map((char) => char.toUpperCase())
     .join("");
 }
+export function toAllLowerCase(s: string) {
+  return s
+    .split("")
+    .map((char) => char.toLowerCase())
+    .join("");
+}
 // TODO: Focus on SQL and `value` property later.
 // FIX: Null
 const phone = mainConfig.site.links.find((link) => link.type === "phone")!;
@@ -27,7 +33,7 @@ function toTitleCase(s: string): string {
 }
 ---
 
-<header class="">
+<header class=" font-lato">
   <div
     class="row-[banner] col-[fullbleed] grid bg-indigo-700 grid-rows-1 grid-cols-subgrid relative"
   >
@@ -44,16 +50,22 @@ function toTitleCase(s: string): string {
   </div>
 
   <div
-    class="row-[nav] col-[fullbleed] w-full grid bg-zinc-200/20 grid-rows-1 grid-cols-subgrid h-14 rounded-b-xl sticky top-0 bg-clip-padding backdrop-filter backdrop-blur-md"
+    class="row-[nav] col-[fullbleed] w-full grid bg-zinc-200/40 grid-rows-1 grid-cols-subgrid h-14 rounded-b-xl sticky top-0 bg-clip-padding backdrop-filter backdrop-blur-md"
   >
-    <nav class="col-[content] flex justify-between items-center text-lg">
-      <div class="flex gap-x-12 items-center">
-        <a class="text-2xl" href="/">{mainConfig.site.shortTitle}</a>
-        <ul class="flex gap-4">
+    <nav class="col-[content] flex justify-between items-center text-base h-full">
+      <div class="flex gap-x-26 items-center h-full">
+        <!-- <a class="text-2xl" href="/">{mainConfig.site.shortTitle}</a> -->
+        <a class="text-2xl h-full py-4" href="/">
+          <img alt="" src="/pacs_logo_extrasmall.png" class="h-full" />
+        </a>
+        <ul class="flex gap-12 text-base font-bold">
           {
-            mainConfig.pages.map(({ href, name }) => (
-              <li>
-                <a href={href}>{name === "index" ? "Home" : toTitleCase(name)}</a>
+            mainConfig.pages.filter(page => page.name != "index").map(({ href, name }) => (
+              <li class="">
+                <a href={href}>
+                  {/* {toAllLowerCase(name === "index" ? "Home" : name)} */}
+                  {toAllUpperCase(name)}
+                </a>
               </li>
             ))
           }
@@ -62,7 +74,7 @@ function toTitleCase(s: string): string {
       <button
         class="bg-blue-500 text-white rounded-[0.25rem] justify-end px-4 py-2 h-fit opacity-100 ring-0 hover:ring-2 hover:cursor-pointer ring-zinc-900"
       >
-        Call Sales
+        CALL SALES
       </button>
     </nav>
   </div>

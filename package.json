@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "start": "npm run build && node run-server.mjs",
+    "start": "node run-server.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -13,6 +13,8 @@
     "@astrojs/node": "^9.1.2",
     "@astrojs/react": "^4.2.0",
     "@fontsource/atkinson-hyperlegible-next": "^5.2.1",
+    "@fontsource/gentium-book-plus": "^5.2.5",
+    "@fontsource/lato": "^5.2.5",
     "@iconify-json/fa6-brands": "^1.2.5",
     "@iconify-json/fa6-solid": "^1.2.3",
     "@iconify-json/lucide": "^1.2.26",

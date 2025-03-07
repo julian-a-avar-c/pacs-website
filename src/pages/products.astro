@@ -1,0 +1,89 @@
+---
+import * as mainConfig from "@/config/main";
+import HeroLanding from "@/sections/hero-landing.astro";
+import Layout from "@/layouts/layout.astro";
+import CardsSection from "@/sections/cards-section.astro";
+import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
+import Footer from "@/components/layout/footer.astro";
+import Header, { toAllUpperCase } from "@/components/layout/header.astro";
+import { Icon } from "astro-icon/components";
+import PeopleSection from "@/sections/people-section.astro";
+import ArticleBannerCard from "@/components/article-banner-card.astro";
+import ArticlesSection from "@/sections/articles-section.astro";
+import HardWorkBanner from "@/sections/hard-work-banner.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const pageConfig = mainConfig.pagesByName["products"];
+
+const rduProduct = {
+  title: "RDU High viscosity fully automated robotic drum decanting unit",
+  description:
+    "RDU Unit: Fully automated drum decanting. No operator needed; auto-identifies bar codes & aligns decanting lance with the drum bung hole.",
+};
+
+const c3buProduct = {
+  title: "C3BU Skid Mounted Lubricating Oil Blending Unit",
+  description:
+    "The C3BU is a portable lubricant blending unit that’s skid-mounted and fits within a shipping container. Like the RDU, it operates without the need for an operator.",
+};
+
+const arcuProduct = {
+  title: "ARCU",
+  description:
+    "Reactor: Energy-efficient for high-temp processes; no hot oil needed.",
+};
+---
+
+<Layout>
+  <Header />
+
+  <main class="gap-y-26">
+    <HeroLanding name={pageConfig.name} href={pageConfig.href} />
+
+    <HalfAndHalfSection
+      tagline="Products tagline"
+      title={rduProduct.title}
+      description={rduProduct.description}
+      imageSource=""
+      reverse
+    />
+    <HalfAndHalfSection
+      tagline="Products tagline"
+      title={c3buProduct.title}
+      description={c3buProduct.description}
+      imageSource=""
+    />
+    <HalfAndHalfSection
+      tagline="Products tagline"
+      title={arcuProduct.title}
+      description={arcuProduct.description}
+      imageSource=""
+    />
+
+    <HardWorkBanner />
+
+    <!-- <PeopleSection title="Our Team" people={pageConfig.people} /> -->
+
+    <ArticlesSection />
+  </main>
+
+  <Footer class="bg-zinc-900 text-white py-36" />
+</Layout>
+
+<style>
+  body > main {
+    z-index: 10;
+    display: grid;
+    grid-row: main;
+    grid-column: fullbleed;
+    /* grid-template-rows:
+      [hero-start] auto
+      [hero-end story-start] auto
+      [story-end stats-start] auto
+      [stats-end team-start] auto
+      [team-end articles-start] auto
+      [articles-end]; */
+    grid-template-columns: subgrid;
+  }
+</style>

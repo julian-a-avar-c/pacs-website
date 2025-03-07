@@ -17,6 +17,12 @@ importers:
       '@fontsource/atkinson-hyperlegible-next':
         specifier: ^5.2.1
         version: 5.2.1
+      '@fontsource/gentium-book-plus':
+        specifier: ^5.2.5
+        version: 5.2.5
+      '@fontsource/lato':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@iconify-json/fa6-brands':
         specifier: ^1.2.5
         version: 1.2.5
@@ -404,6 +410,12 @@ packages:
 
   '@fontsource/atkinson-hyperlegible-next@5.2.1':
     resolution: {integrity: sha512-fLAyP7vCNPD/Tju4f0OuxUUJ9jqNbZyWT8HA3WCcmH1MlqyN7NAgFe+uglHFxqBG1cveZ2QLb76NoRGjEQZmJw==}
+
+  '@fontsource/gentium-book-plus@5.2.5':
+    resolution: {integrity: sha512-j2v75wwsw790uV2Gnsut66ErQ4/qREIGTl37aoINslqOo6WuGE4Dz6o9aVc5BOq9oha/aROdRA+v1UL/+UtU0g==}
+
+  '@fontsource/lato@5.2.5':
+    resolution: {integrity: sha512-d8aogKOul7a3eYG3UzTG8PB6A0D+6tlkFQCACmKQ7qTwB3XS6QmkSW1L0vYbVE9CfCRq/Zpb5sG3gNA6yJea/A==}
 
   '@iconify-json/fa6-brands@1.2.5':
     resolution: {integrity: sha512-U/iFfziz6jSN9zArOJZYTtoj2tQyh6MxPdI8M84DQ2kEulPaj8j+h9bqvjmzszNHmD7v+kmmKd/MLkMKk+3Zuw==}
@@ -3181,6 +3193,10 @@ snapshots:
     optional: true
 
   '@fontsource/atkinson-hyperlegible-next@5.2.1': {}
+
+  '@fontsource/gentium-book-plus@5.2.5': {}
+
+  '@fontsource/lato@5.2.5': {}
 
   '@iconify-json/fa6-brands@1.2.5':
     dependencies:

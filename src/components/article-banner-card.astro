@@ -39,21 +39,31 @@ const {
     class="aspect-video w-full object-cover row-[image] col-[card] rounded-t-2xl flex-none"
   />
   <div class="p-6 text-lg flex flex-col gap-4 grow">
-    <div class="flex flex-col gap-2 flex-none">
-      <h4 class="font-bold text-center text-2xl">
-        {title}
-      </h4>
-      <div class="flex justify-between text-base font-extralight">
-        <div class="flex items-center gap-4">
-          <img src={authorImageSource} class="size-8 rounded-full border-zinc-300" />
-          <p class="">{author}</p>
-        </div>
-        <p class="self-center">{longDate}</p>
+    <div class="flex flex-col flex-none gap-4">
+      <div class="flex flex-col">
+        <h4 class="font-bold text-center text-2xl">
+          {title}
+        </h4>
+        <p class="self-center text-base">{longDate}</p>
+      </div>
+      <div class="flex items-center gap-4 text-base">
+        <img
+          src={authorImageSource}
+          class="size-8 rounded-full border-zinc-300"
+        />
+        <p class="">{author}</p>
       </div>
     </div>
     <p class="flex-none">
       {description}
     </p>
-    <p class="grow flex justify-end underline items-end"><a href="">read more</a></p>
+    <div class="grow flex justify-end items-end">
+      <a
+        href=""
+        class="px-4 py-2 -skew-x-6 rounded-sm bg-zinc-900 text-white italic underline-offset-2 font-semibold shadow-md ring-0 hover:ring-2 ring-zinc-200"
+      >
+        read more
+      </a>
+    </div>
   </div>
 </div>

@@ -19,13 +19,13 @@ const pageConfig = mainConfig.pagesByName["articles"];
 <Layout>
   <Header />
 
-  <main class="gap-y-26">
+  <main class="gap-y-26 pb-26">
     <HeroLanding name={pageConfig.name} href={pageConfig.href} />
 
     <ArticlesSection />
-
-    <Footer class="bg-zinc-900 text-white py-36" />
   </main>
+  
+  <Footer class="bg-zinc-900 text-white py-36" />
 </Layout>
 
 <style>
@@ -34,13 +34,13 @@ const pageConfig = mainConfig.pagesByName["articles"];
     display: grid;
     grid-row: main;
     grid-column: fullbleed;
-    grid-template-rows:
+    /* grid-template-rows:
       [hero-start] auto
       [hero-end story-start] auto
       [story-end stats-start] auto
       [stats-end team-start] auto
       [team-end articles-start] auto
-      [articles-end];
+      [articles-end]; */
     grid-template-columns: subgrid;
   }
 </style>

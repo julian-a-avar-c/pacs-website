@@ -17,7 +17,7 @@ const pageConfig = mainConfig.pagesByName["index"];
 <Layout>
   <Header />
 
-  <main class="gap-y-26 pb-26">
+  <main class="gap-y-26">
     <!-- Start hero -->
     <HeroLanding />
     <!-- End hero -->
@@ -69,7 +69,7 @@ const pageConfig = mainConfig.pagesByName["index"];
           <h2 class="text-4xl font-bold">
             {pageConfig.content.mission.title}
           </h2>
-          <div>
+          <div class="text-lg/7">
             {
               pageConfig.content.mission.content
                 .split("\n")
@@ -88,7 +88,7 @@ const pageConfig = mainConfig.pagesByName["index"];
           <h2 class="text-4xl font-bold">
             {pageConfig.content.vision.title}
           </h2>
-          <div>
+          <div class="text-lg/7">
             {
               pageConfig.content.vision.content
                 .split("\n")

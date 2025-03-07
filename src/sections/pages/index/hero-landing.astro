@@ -19,9 +19,9 @@ const buttonConnectOnLinkedInData = pageConfig.landingHero.buttons.find(
 >
   <div class="grid col-[content] bg-zinc-800/40 grid-cols-6 grid-rows-6">
     <div
-      class="col-start-2 col-span-4 row-start-2 row-span-4 bg-zinc-200/40 backdrop-brightness-120 backdrop-filter backdrop-blur-lg p-12 gap-4 grid rounded-[0.5rem] shadow-md"
+      class="col-start-2 col-span-4 row-start-2 row-span-4 bg-zinc-200/70 backdrop-brightness-120 backdrop-filter backdrop-blur-lg p-12 gap-24 grid rounded-[0.5rem] shadow-md"
     >
-      <div class="grid grid-cols-4 gap-y-4 [text-shadow:_0px_0px_0.1rem_#1d293d]">
+      <div class="grid grid-cols-4 gap-y-4 [text-shadow:_0px_0px_0.1rem_#1d293d] font-atkinson">
         <!-- Title & description -->
         <h1 class="font-extrabold text-6xl col-span-4">
           Processing & Automation
@@ -40,17 +40,18 @@ const buttonConnectOnLinkedInData = pageConfig.landingHero.buttons.find(
           </p>
         </div>
       </div>
-      <div class="flex gap-x-4 text-xl">
+      <div class="flex gap-x-4 text-xl justify-center">
         <!-- Two buttons -->
         <a
           href={buttonButtonData.href}
-          class="min-w-fit h-fit px-4 py-2 ring-2 rounded-full bg-zinc-900 text-white ring-transparent hover:ring-white focus:ring-white"
+          class="min-w-fit h-fit px-8 py-4 font-bold ring-2 rounded-full bg-zinc-900 text-white ring-transparent hover:ring-white focus:ring-white"
         >
           {buttonButtonData.value}
         </a>
+        <span class="self-center font-semibold">-or-</span>
         <a
           href={buttonConnectOnLinkedInData.href}
-          class="min-w-fit h-fit px-4 py-2 ring-2 rounded-full bg-blue-500 text-white ring-transparent hover:ring-white focus:ring-white"
+          class="min-w-fit h-fit px-8 py-4 font-bold ring-2 rounded-full bg-blue-500 text-white ring-transparent hover:ring-white focus:ring-white"
         >
           {buttonConnectOnLinkedInData.value}
         </a>

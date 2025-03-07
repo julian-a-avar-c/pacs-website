@@ -1,38 +1,57 @@
 ---
+import * as mainConfig from "@/config/main";
 import { twMerge } from "tailwind-merge";
-
 
 const { class: className } = Astro.props;
 ---
 
-<footer class={twMerge("col-[fullbleed] grid grid-cols-subgrid bg-zinc-200", className)}>
-  <div class="col-[content] grid grid-cols-4">
+<footer
+  class={twMerge(
+    "col-[fullbleed] grid grid-cols-subgrid bg-zinc-200",
+    className
+  )}
+>
+  <div class="col-[content] grid grid-cols-5 gap-16">
+    <div class="col-span-2 grid grid-cols-2">
+      <img
+        alt=""
+        class="invert"
+        src="/pacs_logo.png"
+      />
+    </div>
     <div class="flex flex-col gap-0.5">
-      <div>Pages</div>
+      <div class="font-extrabold">Contact</div>
+      <!-- <div>{mainConfig.site.links.find(link => link.type === "linkedin")?.href}</div> -->
+      <!-- <div>@{mainConfig.site.links.find(link => link.type === "instagram")?.href}</div> -->
+      <div>
+        {mainConfig.site.links.find((link) => link.type === "email")?.href}
+      </div>
+      <div>
+        {mainConfig.site.links.find((link) => link.type === "phone")?.href}
+      </div>
+    </div>
+    <div class="flex flex-col gap-0.5">
+      <div class="font-extrabold">Pages</div>
       <div>Home</div>
       <div>About</div>
       <div>Products</div>
       <div>Services</div>
+      <div>
+        <div>Articles</div>
+        <div class="pl-4">
+          {
+            mainConfig.pagesByName["articles"].data.map((article) => (
+              <div class="overflow-hidden truncate">{article.title}</div>
+            ))
+          }
+        </div>
+      </div>
     </div>
-    <div class="flex flex-col gap-0.5">
-      <div>LinkedIn</div>
-      <div>Instagram</div>
-      <div>Email</div>
-      <div>Phone Number</div>
-    </div>
-    <div class="flex flex-col gap-0.5">
-      <div>item 1</div>
-      <div>item 2</div>
-      <div>item 3</div>
-      <div>item 4</div>
-      <div>item 5</div>
-      <div>item 6</div>
-      <div>item 7</div>
-      <div>item 8</div>
-    </div>
-    <div class="grid grid-cols-2 *:h-fit">
-      <input type="text" />
-      <button>Subscribe</button>
+    <div class="col-span-1 [&_*]:rounded-sm">
+      <div class="grid grid-cols-7 grid-rows-2 gap-4">
+        <input type="text" class="col-span-7 p-2 px-4 ring-white ring" placeholder="Email Adress"/>
+        <button class="bg-blue-500 col-start-5 col-span-3 p-2">Subscribe</button>
+      </div>
     </div>
   </div>
 </footer>

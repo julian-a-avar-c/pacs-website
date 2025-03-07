@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Atkinson Hyperlegible Next', 'sans-serif';/* , 'Inter', 'sans-serif'; */
+  --font-atkinson: 'Atkinson Hyperlegible Next', 'sans-serif';/* , 'Inter', 'sans-serif'; */
+  --font-lato: 'Lato', 'sans-serif';
+  --font-gentium: 'Gentium Book Plus', 'serif';
 }
 
 :root {

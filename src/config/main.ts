@@ -12,7 +12,7 @@ export const site = {
 };
 
 type Card = {
-  icon: string;
+  icon: string | null;
   title: string;
   description: string;
 };
