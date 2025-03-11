@@ -2,12 +2,18 @@
 import { Icon } from "astro-icon/components";
 import ContainerSection from "@/sections/container-section.astro";
 import { twMerge } from "tailwind-merge";
+import { undefined } from "astro:schema";
 
 interface Props {
-  tagline: string;
+  tagline?: string;
   title: string;
   description?: string;
-  imageSource: string;
+  rawDescription?: string;
+  descriptionClass?: string;
+  containerClass?: string;
+  media:
+    | { type: "image"; source: string; className?: string }
+    | { type: "youtube"; source: string };
   items?: ReadonlyArray<{
     icon: string | null;
     title: string;
@@ -16,47 +22,70 @@ interface Props {
   reverse?: boolean;
 }
 
-const { title, tagline, description, imageSource, items, reverse } =
-  Astro.props;
+const {
+  title,
+  tagline,
+  description,
+  rawDescription,
+  media,
+  items,
+  reverse,
+  descriptionClass,
+  containerClass,
+} = Astro.props;
 ---
 
 <section class="col-[content] flex flex-col gap-8">
-  <h2
-    class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500"
-  >
-    {tagline}
-  </h2>
+  {
+    tagline && (
+      <h2 class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500">
+        {tagline}
+      </h2>
+    )
+  }
 
-  <div class="grid grid-cols-2 gap-x-10">
+  <div class:list={["grid grid-cols-2 gap-x-10", containerClass]}>
     <!--
       Using `h-full` because `aspect-video` and `object-cover` together are not enough, since `aspect-ratio` is a weak CSS property.
       @see https://stackoverflow.com/questions/70159006/css-aspect-ratio-not-working-properly-in-firefox
     -->
-    <img
-      alt=""
-      class={twMerge(
-        "rounded-xl h-full aspect-video object-cover",
-        reverse ? "col-start-2" : null
-      )}
-      src={imageSource}
-    />
-    <div class="flex flex-col gap-8">
+    {
+      media.type === "image" && (
+        <img
+          alt=""
+          class:list={[
+            "rounded-xl h-full aspect-video object-cover row-start-1",
+            { "col-start-2": reverse },
+          ]}
+          src={media.source}
+        />
+      )
+    }
+    <div
+      class:list={[
+        "flex flex-col gap-8 row-start-1",
+        { "col-start-1": reverse },
+      ]}
+    >
       <div class="flex flex-col gap-4">
         <h3 class="font-bold text-2xl">{title}</h3>
         {
           description && (
-            <div class="flex flex-col gap-2">
+            <div
+              class:list={["flex flex-col gap-2 text-lg/7", descriptionClass]}
+            >
               {description?.split("\n").map((paragraph) => (
                 <p>{paragraph}</p>
               ))}
             </div>
           )
         }
+        {rawDescription && <Fragment set:html={rawDescription} />}
       </div>
 
       {
         items && items.length > 0 && (
-          <ul class="flex flex-col">
+          <ul class="flex flex-col list-disc">
             {items.map((item) => (
               <li class="grid grid-cols-[fit-content(100%)_1fr]  grid-rows-[fit-content(100%)_1fr] gap-x-4 gap-y-2">
                 <Icon

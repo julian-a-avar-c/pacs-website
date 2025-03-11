@@ -11,27 +11,31 @@ import PeopleSection from "@/sections/people-section.astro";
 import ArticleBannerCard from "@/components/article-banner-card.astro";
 import ArticlesSection from "@/sections/articles-section.astro";
 import HardWorkBanner from "@/sections/hard-work-banner.astro";
+import { YouTube } from "astro-embed";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 const pageConfig = mainConfig.pagesByName["products"];
 
 const rduProduct = {
-  title: "RDU High viscosity fully automated robotic drum decanting unit",
+  tagline: "Robotic Drum Unit",
+  title: "RDU",
   description:
-    "RDU Unit: Fully automated drum decanting. No operator needed; auto-identifies bar codes & aligns decanting lance with the drum bung hole.",
+    "Fully automated decanting—zero operators needed. Self-identifies barcodes, precision-aligns lance with drum bung.",
 };
 
 const c3buProduct = {
-  title: "C3BU Skid Mounted Lubricating Oil Blending Unit",
+  tagline: "Skid Mounted Lubricating Oil Blending Unit",
+  title: "C3BU",
   description:
-    "The C3BU is a portable lubricant blending unit that’s skid-mounted and fits within a shipping container. Like the RDU, it operates without the need for an operator.",
+    "Skid-mounted lubricant blender. Container-portable, operator-free blending—deploy anywhere, anytime.",
 };
 
 const arcuProduct = {
+  tagline: "Advanced Reactor Unit",
   title: "ARCU",
   description:
-    "Reactor: Energy-efficient for high-temp processes; no hot oil needed.",
+    "High-temp efficiency without hot oil systems. Slashes energy costs in thermal processes.",
 };
 ---
 
@@ -41,27 +45,112 @@ const arcuProduct = {
   <main class="gap-y-26">
     <HeroLanding name={pageConfig.name} href={pageConfig.href} />
 
-    <HalfAndHalfSection
-      tagline="Products tagline"
+    <!-- <HalfAndHalfSection
+      tagline={rduProduct.tagline}
       title={rduProduct.title}
       description={rduProduct.description}
-      imageSource=""
+      descriptionClass="italic"
+      media={{ type: "image", source: "/ttttttttttt.jpg" }}
       reverse
-    />
-    <HalfAndHalfSection
-      tagline="Products tagline"
-      title={c3buProduct.title}
-      description={c3buProduct.description}
-      imageSource=""
-    />
-    <HalfAndHalfSection
-      tagline="Products tagline"
-      title={arcuProduct.title}
-      description={arcuProduct.description}
-      imageSource=""
-    />
+    /> -->
+    <section class="col-[content] flex flex-col gap-8">
+      <h2
+        class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500"
+      >
+        {rduProduct.tagline}
+      </h2>
+
+      <div class="grid grid-cols-3 gap-x-10">
+        <div class="flex flex-col gap-8 row-start-1">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-bold text-2xl">{rduProduct.title}</h3>
+            <div class"flex flex-col gap-2 text-lg 7">
+              {
+                rduProduct.description
+                  .split("\n")
+                  .map((paragraph) => <p>{paragraph}</p>)
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-7 gap-x-4 items-center col-span-2">
+          <input
+            type="text"
+            class="col-span-5 p-2 px-4 ring-black inset-ring-2 rounded"
+            placeholder="Email Address"
+          />
+          <button
+            class="bg-blue-500 text-white font-semibold col-span-2 p-2 rounded"
+          >
+            Subscribe
+          </button>
+          <p class="col-span-7 italic text-center text-sm">
+            Subscribe today for more information
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="col-[content] flex flex-col gap-8">
+      <h2
+        class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500"
+      >
+        {c3buProduct.tagline}
+      </h2>
+
+      <div class="grid grid-cols-3 gap-x-10">
+        <YouTube
+          id="https://www.youtube.com/watch?v=0Jzk1UbaT_A"
+          posterQuality="high"
+          class="rounded-xl h-full w-full aspect-video object-cover row-start-1 col-span-2"
+        />
+        <div class="flex flex-col gap-8 row-start-1">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-bold text-2xl">{c3buProduct.title}</h3>
+            <div class"flex flex-col gap-2 text-lg 7">
+              {
+                c3buProduct.description
+                  .split("\n")
+                  .map((paragraph) => <p>{paragraph}</p>)
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <HardWorkBanner />
+
+    <section class="col-[content] flex flex-col gap-8">
+      <h2
+        class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500"
+      >
+        {arcuProduct.tagline}
+      </h2>
+
+      <div class="grid grid-cols-3 gap-x-10">
+        <div class="flex flex-col gap-8 row-start-1">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-bold text-2xl">{arcuProduct.title}</h3>
+            <div class"flex flex-col gap-2 text-lg 7">
+              {
+                arcuProduct.description
+                  .split("\n")
+                  .map((paragraph) => <p>{paragraph}</p>)
+              }
+            </div>
+          </div>
+        </div>
+
+        <img
+          alt=""
+          class="rounded-xl h-full w-full aspect-video object-cover row-start-1 col-span-2"
+          src="dddddddddddddddddddddddddddddddddddddddddddd.png"
+          ,
+        />
+      </div>
+    </section>
 
     <!-- <PeopleSection title="Our Team" people={pageConfig.people} /> -->
 

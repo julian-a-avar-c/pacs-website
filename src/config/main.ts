@@ -3,11 +3,31 @@ export const site = {
   shortTitle: "PACS LLC",
   links: [
     { type: "site", href: "https://pacsllc.net" },
-    { type: "linkedin", href: "pacsllc" }, // FIX
-    { type: "instagram", href: "pacsllc" }, // FIX
-    { type: "phone", href: "000.000.0000" }, // FIX
-    { type: "email", href: "info@pacsllc.net" },
-    { type: "location", href: "NY / NJ" }, // FIX
+    {
+      type: "linkedin",
+      icon: "fa6-brands:linkedin",
+      value: "pacsllc",
+      href: "https://www.linkedin.com/company/pacsllc/",
+    }, // FIX
+    {
+      type: "instagram",
+      icon: "fa6-brands:instagram",
+      value: "pacs_llc",
+      href: "https://www.instagram.com/pacs_llc/",
+    }, // FIX
+    {
+      type: "phone",
+      icon: "fa6-solid:phone",
+      value: "(773) 474-9701",
+      href: "tel:+17734749701",
+    }, // FIX
+    {
+      type: "email",
+      icon: "fa6-solid:envelope",
+      value: "info@pacsllc.net",
+      href: "mailto:info@pacsllc.net",
+    },
+    { type: "location", icon: "fa6-solid:globe", value: "NY / NJ" }, // FIX
   ],
 };
 
@@ -36,8 +56,8 @@ export type PageNames = Pages[number]["name"];
 export type PagesByName = {
   index: PageIndex;
   about: PageAbout;
-  products: Page & { name: "products" };
-  services: Page & { name: "services" };
+  products: PageProducts;
+  services: PageServices;
   articles: PageArticles;
 };
 
@@ -76,7 +96,7 @@ type PageAbout = Page & {
     name: string;
     title: string;
     bio: string;
-    links: { type: string; href: string }[];
+    links: { type: string; value: string; href: string }[];
   }[];
 };
 
@@ -97,6 +117,35 @@ type PageArticles = Page & {
   }[];
 };
 
+type PageProducts = Page & {
+  name: "products";
+  href: "/products";
+  items: { tagline: string; title: string; description: string }[];
+};
+
+type PageServices = Page & {
+  name: "services";
+  href: "/services";
+  consultancy: {
+    title: string;
+    description: string;
+    items: { icon: string; title: string }[];
+  };
+  management: {
+    title: string;
+    description: string;
+    items: { icon: string; title: string }[];
+  };
+  controlSystems: {
+    title: string;
+    description: string;
+  };
+  study: {
+    title: string;
+    items: { icon: string; title: string }[];
+  };
+};
+
 const pageIndex: PageIndex = {
   name: "index",
   href: "/",
@@ -108,8 +157,16 @@ const pageIndex: PageIndex = {
         value: "Talk to Sales",
         href: "mailto:info@pacsllc.net",
       },
-      { name: "connectOnLinkedin", value: "Connect on LinkedIn", href: "https://www.linkedin.com/company/pacsllc/" },
-      { name: "connectOnLinkedinShort", value: "Connect!", href: "https://www.linkedin.com/company/pacsllc/" },
+      {
+        name: "connectOnLinkedin",
+        value: "Connect on LinkedIn",
+        href: "https://www.linkedin.com/company/pacsllc/",
+      },
+      {
+        name: "connectOnLinkedinShort",
+        value: "Connect!",
+        href: "https://www.linkedin.com/company/pacsllc/",
+      },
     ],
   },
   cards: [
@@ -138,19 +195,19 @@ const pageIndex: PageIndex = {
       "Distinctio fugiat dolor, nesciunt pariatur excepturi consectetur consequatur ipsum eum, eius quos perspiciatis ex nisi laudantium. Optio deleniti mollitia molestiae.\nSimilique natus sed tempora rerum deleniti mollitia dicta doloribus quo.",
     items: [
       {
-        icon: "fa6-solid:circle-question",
+        icon: "fa6-solid:angle-right",
         title: "Service 1",
         description:
           "Veniam exercitation eiusmod nostrud nisi nulla ex anim reprehenderit qui. Elit laboris est dolore commodo adipisicing proident incididunt velit elit qui ad excepteur proident ut. Consectetur incididunt enim et est consequat. Dolor dolore do quis mollit commodo voluptate ut incididunt magna culpa.",
       },
       {
-        icon: "fa6-solid:circle-question",
+        icon: "fa6-solid:angle-right",
         title: "Service 2",
         description:
           "Laborum fugiat fugiat commodo laborum ea exercitation non Lorem. Eu ad est laborum laboris voluptate occaecat consectetur proident ad. Reprehenderit amet sunt consequat nisi id veniam elit incididunt elit. Labore ut consectetur amet eu consequat pariatur sit laborum Lorem ipsum veniam nulla ad. Laborum consectetur occaecat aliqua pariatur.",
       },
       {
-        icon: "fa6-solid:circle-question",
+        icon: "fa6-solid:angle-right",
         title: "Service 3",
         description:
           "Labore fugiat nulla Lorem in pariatur dolor aliquip qui eu dolor. Fugiat incididunt non anim. Nisi quis enim incididunt velit excepteur ex officia qui reprehenderit qui eiusmod do duis voluptate id. Ea Lorem culpa esse laboris qui. In occaecat eiusmod cupidatat commodo labore excepteur occaecat.",
@@ -161,36 +218,36 @@ const pageIndex: PageIndex = {
     mission: {
       title: "PACS Mission",
       content:
-        "Irure aliqua cillum proident sint eu dolor ex. Deserunt laborum Lorem duis consequat nisi laborum enim. Anim commodo qui exercitation ut esse quis commodo laborum occaecat. Officia consequat pariatur dolore fugiat et non esse irure occaecat occaecat ipsum enim elit ut. Sunt incididunt exercitation occaecat amet ad ad. Reprehenderit do occaecat Lorem.",
+        " Our solutions are proven and designed based on the best practices in the fine art of engineering and are backed by our long experience in field work. We build our systems in a modular fashion and deliver them fully factory tested prior to shipping for rapid commissioning. Our turnkey modular approach results in successful quick implementation with an efficient high rate of return on investment.",
     },
     vision: {
       title: "PACS Vision",
       content:
-        "Irure aliqua cillum proident sint eu dolor ex. Deserunt laborum Lorem duis consequat nisi laborum enim. Anim commodo qui exercitation ut esse quis commodo laborum occaecat. Officia consequat pariatur dolore fugiat et non esse irure occaecat occaecat ipsum enim elit ut. Sunt incididunt exercitation occaecat amet ad ad. Reprehenderit do occaecat Lorem.",
+        "PACS understands that having a single source of project support simplifies and expedites decision-making, coordination, and execution. PACS consolidates responsibilities for engineering, procurement, installation inspection and start-up assistance, and can provide turnkey blending and manufacturing solutions. From the outskirts of New York City we serve the world. ",
     },
   },
   products: {
     title: "Products",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam sed impedit incidunt mollitia veniam dolor\nconsectetur quia repellendus aperiam explicabo, consequuntur, inventore necessitatibus cum autem. Laudantium voluptas dignissimos obcaecati perferendis?",
+    description: `<p>PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free.</p>
+      <p><em>Automation simplified. Productivity amplified.</em><p>`,
     items: [
       {
-        icon: "fa6-solid:circle-question",
-        title: "Product 1",
+        icon: "fa6-solid:angle-right",
+        title: "RDU",
         description:
-          "Reprehenderit do minim dolore exercitation deserunt commodo sit irure non anim. Quis aute minim Lorem quis qui ullamco minim ad adipisicing eiusmod elit. Exercitation ullamco nisi commodo tempor id sint ea et adipisicing cillum. Incididunt elit eu eu amet reprehenderit est aliqua eu. Id cillum fugiat id ullamco minim sint aliqua culpa quis enim. Labore in nostrud mollit proident mollit laborum fugiat. Laboris sint voluptate quis esse occaecat aliqua cillum anim fugiat duis irure. Exercitation incididunt ea qui.",
+          "Fully automated decanting—zero operators needed. Self-identifies barcodes, precision-aligns lance with drum bung.",
       },
       {
-        icon: "fa6-solid:circle-question",
-        title: "Product 2",
+        icon: "fa6-solid:angle-right",
+        title: "C3BU",
         description:
-          "Magna deserunt ex ipsum pariatur. Ex excepteur deserunt commodo sint aliquip occaecat non. Nulla minim commodo ullamco dolore est cillum ipsum voluptate laborum nostrud do occaecat. Voluptate voluptate nostrud laborum aliqua ullamco culpa aute nulla. Incididunt ipsum consequat consectetur proident excepteur eiusmod duis proident do excepteur ea consectetur adipisicing esse. Dolore deserunt tempor consequat proident qui velit qui irure mollit cupidatat aliqua est mollit.",
+          "Skid-mounted lubricant blender. Container-portable, operator-free blending—deploy anywhere, anytime.",
       },
       {
-        icon: "fa6-solid:circle-question",
-        title: "Product 3",
+        icon: "fa6-solid:angle-right",
+        title: "ARCU",
         description:
-          "Ad cillum incididunt eu dolor elit minim magna dolore eu tempor laboris voluptate consequat incididunt non. Culpa sit est cillum et nulla excepteur aute consequat do anim occaecat ad. Ad nisi qui cillum in deserunt reprehenderit occaecat laborum fugiat non proident sunt adipisicing excepteur consequat. Commodo non qui Lorem labore eu dolor sit sint ad laboris aliqua tempor cillum.",
+          "High-temp efficiency without hot oil systems. Slashes energy costs in thermal processes.",
       },
     ],
   },
@@ -208,8 +265,8 @@ const pageAbout: PageAbout = {
       title: "President",
       bio: "Ea veniam aute do occaecat veniam consectetur ipsum excepteur proident consectetur ullamco eiusmod. Mollit et id consequat exercitation ut officia aliquip commodo deserunt commodo. Pariatur eu duis esse irure excepteur irure deserunt eiusmod incididunt consectetur non velit eu proident.",
       links: [
-        { type: "email", href: "pablo.garce@pacsllc.net" },
-        { type: "linkedin", href: "" },
+        { type: "email", value: "pablo.garce@pacsllc.net", href: "" },
+        { type: "linkedin", value: "", href: "" },
       ],
     },
     {
@@ -217,17 +274,20 @@ const pageAbout: PageAbout = {
       name: "Carla Campopiano",
       title: "Chief Executive Officer",
       bio: "Sunt labore et ipsum dolor adipisicing. Veniam cupidatat irure culpa est exercitation mollit consectetur tempor anim officia nulla in. Exercitation proident sint qui dolor enim. Nostrud amet non ex sint cillum sunt non et magna deserunt sit aliqua nulla.",
-      links: [{ type: "email", href: "" }],
+      links: [{ type: "email", value: "", href: "" }],
     },
     {
       image: "cesar.jpg",
       name: "Cesar Campopiano",
       title: "Project Coordinator",
-      bio: "Ex commodo deserunt minim. Est tempor Lorem labore non veniam velit. Deserunt deserunt cupidatat aliqua amet nisi eiusmod sint laborum. Anim excepteur minim nisi eu laboris amet consequat in. Elit non velit incididunt ea sit aliquip reprehenderit ex ipsum nostrud nisi ipsum sint.",
+      bio: "As a licensed architect specializing in energy-efficient design and project management, I lead initiatives that prioritize precision and sustainability. My role as a project coordinator centers on delivering high-quality outcomes on time and within scope, ensuring every project harmonizes operational efficiency with meticulous execution.",
       links: [
-        { type: "email", href: "" },
-        { type: "linkedin", href: "" },
-        { type: "instagram", href: "" },
+        {
+          type: "email",
+          value: "cesar.campopiano@pacsllc.net",
+          href: "mailto:cesar.campopiano@pacsllc.net",
+        },
+        { type: "phone", value: "+54 3812468054", href: "tel:+543812468054" },
       ],
     },
   ],
@@ -312,7 +372,7 @@ const pageArticles: PageArticles = {
         IMG
         <p>By embracing sustainable solutions tailored to their specific needs, organizations can drive efficiency, fortify operations against uncertainties, and pave the way for a brighter future. With a focus on harnessing the power of automation and resilience-building, they can navigate facility improvement confidently, ensuring not just a choice, but the surest path to long-term success.</p>
         <p>Shall we delve into sustainable solutions, driving efficiency, fortifying facility operations, and embracing automation for a brighter future?</p>
-      `
+      `,
     },
     {
       overview: {
@@ -351,11 +411,99 @@ const pageArticles: PageArticles = {
   ],
 }; // pageArticles
 
+const pageProducts: PageProducts = {
+  name: "products",
+  href: "/products",
+  items: [
+    {
+      tagline: "Robotic Drum Unit",
+      title: "RDU",
+      description:
+        "Fully automated decanting—zero operators needed. Self-identifies barcodes, precision-aligns lance with drum bung.",
+    },
+    {
+      tagline: "Skid Mounted Lubricating Oil Blending Unit",
+      title: "C3BU",
+      description:
+        "Skid-mounted lubricant blender. Container-portable, operator-free blending—deploy anywhere, anytime.",
+    },
+    {
+      tagline: "Advanced Reactor Unit",
+      title: "ARCU",
+      description:
+        "High-temp efficiency without hot oil systems. Slashes energy costs in thermal processes.",
+    },
+  ],
+}; // pageProducts
+
+const pageServices: PageServices = {
+  name: "services",
+  href: "/services",
+  consultancy: {
+    title: "Consultancy Services",
+    description: "We offer cost-effective and tailored consultancy",
+    items: [
+      { icon: "fa6-solid:angle-right", title: "Feasibility analysis" },
+      { icon: "fa6-solid:angle-right", title: "ROI studies" },
+      {
+        icon: "fa6-solid:angle-right",
+        title: "Pre-purchase site walkthroughs",
+      },
+      { icon: "fa6-solid:angle-right", title: "Plant & equipment design" },
+      { icon: "fa6-solid:angle-right", title: "Design reviews" },
+    ],
+  },
+
+  management: {
+    title: "Management services",
+    description:
+      "With decades of experience and a vast network in the field, we are your trusted coordinator ensuring projects are on schedule and within budget.\nManagement: Includes eng. studies, procurement, scheduling, testing (Dry & FAT), installation, commissioning, & optimization.",
+    items: [
+      { icon: "fa6-solid:angle-right", title: "Engineering" },
+      { icon: "fa6-solid:angle-right", title: "Procurement" },
+      { icon: "fa6-solid:angle-right", title: "Project management" },
+      { icon: "fa6-solid:angle-right", title: "Testing & installation" },
+      {
+        icon: "fa6-solid:angle-right",
+        title: "Commissioning & Start up optimization",
+      },
+    ],
+  },
+
+  controlSystems: {
+    title: "Control System Proprietary Bach Control Software",
+    description:
+      "BACH Control SW: Modular control systems with PLC & PC-based HMI.\nPACS LLC Control systems are modular, scalable, and adaptable. From small units to plant-wide integration, our systems are designed for flexibility.\nPLC unit for real-time control.\nPC-based HMI for production order initiation, process monitoring, control, and historical data recording.",
+  },
+
+  study: {
+    title: "Study",
+    items: [
+      { icon: "fa6-solid:angle-right", title: "Engineering studies" },
+      { icon: "fa6-solid:angle-right", title: "Procurement services" },
+      {
+        icon: "fa6-solid:angle-right",
+        title: "Project management and scheduling services",
+      },
+      { icon: "fa6-solid:angle-right", title: "Dry & FAT tests" },
+      {
+        icon: "fa6-solid:angle-right",
+        title: "Installation & installation supervision",
+      },
+      { icon: "fa6-solid:angle-right", title: "Start up and commissioning" },
+      {
+        icon: "fa6-solid:angle-right",
+        title: "Operational performance & optimization",
+      },
+    ],
+  },
+}; // pageServices
+
 export const pages: Pages = [
   pageIndex,
   pageAbout,
-  { name: "products", href: "/products" },
-  { name: "services", href: "/services" },
+  pageProducts,
+  pageServices,
   pageArticles,
 ];
 

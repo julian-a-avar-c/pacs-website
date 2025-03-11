@@ -1,8 +1,21 @@
 ---
 import * as mainConfig from "@/config/main";
+import { Icon } from "astro-icon/components";
 import { twMerge } from "tailwind-merge";
 
 const { class: className } = Astro.props;
+
+const phone = mainConfig.site.links.find((link) => link.type === "phone")!;
+const email = mainConfig.site.links.find((link) => link.type === "email")!;
+const location = mainConfig.site.links.find(
+  (link) => link.type === "location"
+)!;
+const linkedin = mainConfig.site.links.find(
+  (link) => link.type === "linkedin"
+)!;
+const instagram = mainConfig.site.links.find(
+  (link) => link.type === "instagram"
+)!;
 ---
 
 <footer
@@ -12,36 +25,48 @@ const { class: className } = Astro.props;
   )}
 >
   <div class="col-[content] grid grid-cols-5 gap-16">
-    <div class="col-span-2 grid grid-cols-2">
-      <img
-        alt=""
-        class="invert"
-        src="/pacs_logo.png"
-      />
-    </div>
+    <a href="/" class="col-span-2 grid grid-cols-3 gap-x-16">
+      <img alt="" class="invert col-span-2" src="/pacs_logo.png" />
+      <span class="row-start-2 col-span-3 self-end">
+        Copyright &copy; PACS LLC 2025
+      </span>
+    </a>
     <div class="flex flex-col gap-0.5">
       <div class="font-extrabold">Contact</div>
-      <!-- <div>{mainConfig.site.links.find(link => link.type === "linkedin")?.href}</div> -->
-      <!-- <div>@{mainConfig.site.links.find(link => link.type === "instagram")?.href}</div> -->
-      <div>
-        {mainConfig.site.links.find((link) => link.type === "email")?.href}
-      </div>
-      <div>
-        {mainConfig.site.links.find((link) => link.type === "phone")?.href}
-      </div>
+      <a href={email.href} class="flex gap-x-1 hover:underline items-center">
+        <Icon name={email.icon} />
+        <span>{email.value}</span>
+      </a>
+      <a href={phone.href} class="flex gap-x-1 hover:underline items-center">
+        <Icon name={phone.icon} />
+        <span>{phone.value}</span>
+      </a>
+      <a href={linkedin.href} class="flex gap-x-1 hover:underline items-center">
+        <Icon name={linkedin.icon} />
+        <span>@{linkedin.value}</span>
+      </a>
+      <a
+        href={instagram.href}
+        class="flex gap-x-1 hover:underline items-center"
+      >
+        <Icon name={instagram.icon} />
+        <span>@{instagram.value}</span>
+      </a>
     </div>
-    <div class="flex flex-col gap-0.5">
+    <div class="flex flex-col gap-0.5 [&_a]:hover:underline">
       <div class="font-extrabold">Pages</div>
-      <div>Home</div>
-      <div>About</div>
-      <div>Products</div>
-      <div>Services</div>
+      <a href={mainConfig.pagesByName["index"].href}>Home</a>
+      <a href={mainConfig.pagesByName["about"].href}>About</a>
+      <a href={mainConfig.pagesByName["products"].href}>Products</a>
+      <a href={mainConfig.pagesByName["services"].href}>Services</a>
       <div>
-        <div>Articles</div>
-        <div class="pl-4">
+        <a href={mainConfig.pagesByName["articles"].href}>Articles</a>
+        <div class="pl-4 flex flex-col">
           {
             mainConfig.pagesByName["articles"].data.map((article) => (
-              <div class="overflow-hidden truncate">{article.title}</div>
+              <a href={article.href} class="overflow-hidden truncate">
+                {article.title}
+              </a>
             ))
           }
         </div>
@@ -49,8 +74,14 @@ const { class: className } = Astro.props;
     </div>
     <div class="col-span-1 [&_*]:rounded-sm">
       <div class="grid grid-cols-7 grid-rows-2 gap-4">
-        <input type="text" class="col-span-7 p-2 px-4 ring-white ring" placeholder="Email Adress"/>
-        <button class="bg-blue-500 col-start-5 col-span-3 p-2">Subscribe</button>
+        <input
+          type="text"
+          class="col-span-7 p-2 px-4 ring-white ring"
+          placeholder="Email Address"
+        />
+        <button class="bg-blue-500 col-start-5 col-span-3 p-2">
+          Subscribe
+        </button>
       </div>
     </div>
   </div>

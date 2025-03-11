@@ -8,6 +8,7 @@ import Footer from "@/components/layout/footer.astro";
 import Header, { toAllUpperCase } from "@/components/layout/header.astro";
 import { Icon } from "astro-icon/components";
 import ArticlesSection from "@/sections/articles-section.astro";
+import CircleSection from "@/sections/circle-section.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -37,7 +38,7 @@ const pageConfig = mainConfig.pagesByName["index"];
       tagline="Our services"
       title="Innovative solutions for complex energy problems"
       description="Our team is cost effective, providing analysis of investment and custom solutions."
-      imageSource="/IMG_2316.JPEG"
+      media={{ type: "image", source: "/IMG_2316.JPEG" }}
       items={[
         { icon: "fa6-solid:check", title: "Feasibility studies" },
         { icon: "fa6-solid:check", title: "Investment ROI and payback study" },
@@ -69,7 +70,7 @@ const pageConfig = mainConfig.pagesByName["index"];
           <h2 class="text-4xl font-bold">
             {pageConfig.content.mission.title}
           </h2>
-          <div class="text-lg/7">
+          <div class="text-lg/9">
             {
               pageConfig.content.mission.content
                 .split("\n")
@@ -88,7 +89,7 @@ const pageConfig = mainConfig.pagesByName["index"];
           <h2 class="text-4xl font-bold">
             {pageConfig.content.vision.title}
           </h2>
-          <div class="text-lg/7">
+          <div class="text-lg/9">
             {
               pageConfig.content.vision.content
                 .split("\n")
@@ -102,10 +103,10 @@ const pageConfig = mainConfig.pagesByName["index"];
 
     <!-- Products -->
     <HalfAndHalfSection
-      tagline="Products tagline"
+      tagline="Innovations"
       title={pageConfig.products.title}
-      description={pageConfig.products.description}
-      imageSource=""
+      rawDescription={pageConfig.products.description}
+      media={{ type: "image", source: "" }}
       items={pageConfig.products.items}
       reverse
     />

@@ -25,7 +25,10 @@ const { title, people } = Astro.props;
       people.map((person) => (
         <div class="shadow-md min-w-80 max-w-96 p-6 flex flex-col gap-6 rounded-lg h-fit">
           <div class="flex gap-6 items-center">
-            <img src={person.image} class="size-20 self-center rounded-full border-zinc-300 border-2" />
+            <img
+              src={person.image}
+              class="size-20 self-center rounded-full border-zinc-300 border-2"
+            />
             <div class="flex flex-col">
               <h4 class="font-bold text-2xl">{person.name}</h4>
               <h5 class="font-bold col-start-2 text-md text-zinc-600">
@@ -33,52 +36,34 @@ const { title, people } = Astro.props;
               </h5>
             </div>
           </div>
-  
-          <div>{person.bio}</div>
-  
+
+          <div class="flex flex-col gap-2 text-base/7">
+            {person.bio.split("\n").map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+
           <hr class="border-zinc-300 border-t-1" />
-  
+
           <div class="flex gap-2 justify-end">
-            {person.links.map((link) =>
+            {person.links.map((link) => (
               <a href={link.href}>
-                {
-                  link.type === "phone" ? <Icon name="fa6-solid:phone"/> :
-                  link.type === "email" ? <Icon name="fa6-solid:envelope"/> :
-                  link.type === "linkedin" ? <Icon name="fa6-brands:linkedin"/> :
-                  link.type === "instagram" ? <Icon name="fa6-brands:instagram"/> :
-                  <Icon name="fa6-solid:link"/>
-                }
+                {link.type === "phone" ? (
+                  <Icon name="fa6-solid:phone" />
+                ) : link.type === "email" ? (
+                  <Icon name="fa6-solid:envelope" />
+                ) : link.type === "linkedin" ? (
+                  <Icon name="fa6-brands:linkedin" />
+                ) : link.type === "instagram" ? (
+                  <Icon name="fa6-brands:instagram" />
+                ) : (
+                  <Icon name="fa6-solid:link" />
+                )}
               </a>
-            )}
+            ))}
           </div>
         </div>
       ))
     }
   </div>
 </section>
-
-<!-- <ContainerSection title={title}>
-  <div class="flex justify-center">
-    <div class="flex flex-row gap-4">
-      {
-        people.map((person) => (
-          <div class=" shadow-md w-64 p-4 flex flex-col gap-2">
-            <div class=" flex gap-4">
-              <img src={person.image} class="size-10 self-center rounded-full" />
-              <div class="flex flex-col">
-                <h4 class="font-bold text-lg">{person.name}</h4>
-                <h5 class="font-bold col-start-2 text-sm text-zinc-600">{person.title}</h5>
-              </div>
-            </div>
-
-            <div>{person.bio}</div>
-
-            <hr class="bg-black border-t-2" />
-
-            <div>{/* TODO: Put links here. */}</div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
-</ContainerSection> -->

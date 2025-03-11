@@ -71,7 +71,7 @@ const articleData = pageConfig.data.find((a) => a.href.includes(article))!;
     <article class:list={["col-[content] flex justify-center"]}>
       <div
         class:list={[
-          "max-w-[80em] grid grid-cols-1 gap-18",
+          "grid grid-cols-1 gap-18",
           { "grid-cols-2": articleData.contentImageSource },
         ]}
       >
@@ -93,7 +93,7 @@ const articleData = pageConfig.data.find((a) => a.href.includes(article))!;
           </div>
           <!-- <YouTube id="https://youtu.be/sqCxLhu8CbI"/> -->
           <div
-            class="text-lg [&_ol]:list-decimal [&_ul]:list-disc [&_a]:underline [&_ol]:list-inside [&_ul]:list-inside flex flex-col gap-4"
+            class="text-lg [&_ol]:list-decimal [&_ul]:list-disc [&_a]:underline [&_ol]:list-inside [&_ul]:list-inside flex flex-col gap-4 max-w-[80ch] text-justify"
           >
             <Fragment set:html={articleData.content} />
           </div>
@@ -118,13 +118,13 @@ const articleData = pageConfig.data.find((a) => a.href.includes(article))!;
     display: grid;
     grid-row: main;
     grid-column: fullbleed;
-    grid-template-rows:
+    /* grid-template-rows:
       [hero-start] auto
       [hero-end story-start] auto
       [story-end stats-start] auto
       [stats-end team-start] auto
       [team-end articles-start] auto
-      [articles-end];
+      [articles-end]; */
     grid-template-columns: subgrid;
   }
 </style>

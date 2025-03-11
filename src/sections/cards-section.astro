@@ -22,15 +22,15 @@ const { title, cards } = Astro.props;
   <div class="flex self-center gap-12">
     {
       cards.map((card) => (
-        <div id={`${card.title}`} class=" w-96 rounded-lg shadow-md p-8 flex flex-col gap-2">
+        <div id={`${card.title}`} class=" w-96 rounded-lg shadow-md p-8 flex flex-col gap-6 hover:bg-zinc-100/40">
           <div class="text-2xl flex gap-4 items-center">
             <Icon name={
                 card.icon === null ? "fa6-solid:circle-question" : card.icon
-              } title="xxx" class="size-10" />
+              } class="size-10" />
             <h4 class="font-bold">{card.title}</h4>
           </div>
   
-          <div class="text-lg">{card.description}</div>
+          <div class="text-lg/8">{card.description}</div>
   
           {false && (
             <hr class="bg-black border-t-2" />

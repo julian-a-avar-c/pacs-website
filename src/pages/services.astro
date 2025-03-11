@@ -15,50 +15,6 @@ import HardWorkBanner from "@/sections/hard-work-banner.astro";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 const pageConfig = mainConfig.pagesByName["services"];
-
-const consultancyServices = {
-  title: "Consultancy Services",
-  description: "We offer cost-effective and tailored consultancy",
-  items: [
-    { icon: null, title: "Feasibility analysis" },
-    { icon: null, title: "ROI studies" },
-    { icon: null, title: "Pre-purchase site walkthroughs" },
-    { icon: null, title: "Plant & equipment design" },
-    { icon: null, title: "Design reviews" },
-  ],
-};
-
-const managementServices = {
-  title: "Management services",
-  description:
-    "With decades of experience and a vast network in the field, we are your trusted coordinator ensuring projects are on schedule and within budget.\nManagement: Includes eng. studies, procurement, scheduling, testing (Dry & FAT), installation, commissioning, & optimization.",
-  items: [
-    { icon: null, title: "Engineering" },
-    { icon: null, title: "Procurement" },
-    { icon: null, title: "Project management" },
-    { icon: null, title: "Testing & installation" },
-    { icon: null, title: "Commissioning & Start up optimization" },
-  ],
-};
-
-const controlSystems = {
-  title: "Control System Proprietary Bach Control Software",
-  description:
-    "BACH Control SW: Modular control systems with PLC & PC-based HMI.\nPACS LLC Control systems are modular, scalable, and adaptable. From small units to plant-wide integration, our systems are designed for flexibility.\nPLC unit for real-time control.\nPC-based HMI for production order initiation, process monitoring, control, and historical data recording.",
-};
-
-const studyServices = {
-  title: "Study",
-  items: [
-    { icon: null, title: "Engineering studies" },
-    { icon: null, title: "Procurement services" },
-    { icon: null, title: "Project management and scheduling services" },
-    { icon: null, title: "Dry & FAT tests" },
-    { icon: null, title: "Installation & installation supervision" },
-    { icon: null, title: "Start up and commissioning" },
-    { icon: null, title: "Operational performance & optimization" },
-  ],
-};
 ---
 
 <Layout>
@@ -69,35 +25,36 @@ const studyServices = {
 
     <HalfAndHalfSection
       tagline="Products tagline"
-      title={consultancyServices.title}
-      description={consultancyServices.description}
-      imageSource=""
-      items={consultancyServices.items}
+      title={pageConfig.consultancy.title}
+      description={pageConfig.consultancy.description}
+      media={{ type: "image", source: "" }}
+      items={pageConfig.consultancy.items}
       reverse
     />
     <HalfAndHalfSection
       tagline="Products tagline"
-      title={managementServices.title}
-      description={managementServices.description}
-      imageSource=""
-      items={managementServices.items}
+      title={pageConfig.management.title}
+      description={pageConfig.management.description}
+      media={{ type: "image", source: "" }}
+      items={pageConfig.management.items}
     />
+
+    <HardWorkBanner />
+
     <HalfAndHalfSection
       tagline="Products tagline"
-      title={controlSystems.title}
-      description={controlSystems.description}
-      imageSource=""
+      title={pageConfig.controlSystems.title}
+      description={pageConfig.controlSystems.description}
+      media={{ type: "image", source: "" }}
       items={[]}
     />
     <HalfAndHalfSection
       tagline="Products tagline"
-      title={studyServices.title}
-      imageSource=""
-      items={studyServices.items}
+      title={pageConfig.study.title}
+      media={{ type: "image", source: "" }}
+      items={pageConfig.study.items}
       reverse
     />
-
-    <HardWorkBanner />
 
     <!-- <PeopleSection title="Our Team" people={pageConfig.people} /> -->
 
