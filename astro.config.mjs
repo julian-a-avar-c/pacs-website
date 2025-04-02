@@ -11,7 +11,7 @@ import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
+  // output: "server",
 
   integrations: [react(), icon()],
 
@@ -19,7 +19,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  adapter: node({
-    mode: 'middleware'
-  })
+  // adapter: node({
+  //   mode: 'middleware'
+  // })
 });
