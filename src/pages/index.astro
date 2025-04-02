@@ -5,10 +5,8 @@ import Layout from "@/layouts/layout.astro";
 import CardsSection from "@/sections/cards-section.astro";
 import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
 import Footer from "@/components/layout/footer.astro";
-import Header, { toAllUpperCase } from "@/components/layout/header.astro";
-import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/header.astro";
 import ArticlesSection from "@/sections/articles-section.astro";
-import CircleSection from "@/sections/circle-section.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -128,13 +126,13 @@ const pageConfig = mainConfig.pagesByName["index"];
     display: grid;
     grid-row: main;
     grid-column: fullbleed;
-    grid-template-rows:
+    /* grid-template-rows:
       [hero-start] auto
       [hero-end about-cards-start] auto
       [about-cards-end services-start] auto
       [services-end mission-vision-start] 100lvh
       [mission-vision-end articles-start] auto
-      [articles-end];
+      [articles-end]; */
     grid-template-columns: subgrid;
   }
 </style>

@@ -2,13 +2,8 @@
 import * as mainConfig from "@/config/main";
 import HeroLanding from "@/sections/hero-landing.astro";
 import Layout from "@/layouts/layout.astro";
-import CardsSection from "@/sections/cards-section.astro";
-import HalfAndHalfSection from "@/sections/half-and-half-section.astro";
 import Footer from "@/components/layout/footer.astro";
-import Header, { toAllUpperCase } from "@/components/layout/header.astro";
-import { Icon } from "astro-icon/components";
-import PeopleSection from "@/sections/people-section.astro";
-import ArticleBannerCard from "@/components/article-banner-card.astro";
+import Header from "@/components/layout/header.astro";
 import ArticlesSection from "@/sections/articles-section.astro";
 import HardWorkBanner from "@/sections/hard-work-banner.astro";
 import { YouTube } from "astro-embed";
@@ -100,11 +95,13 @@ const arcuProduct = {
       </h2>
 
       <div class="grid grid-cols-3 gap-x-10">
-        <YouTube
-          id="https://www.youtube.com/watch?v=0Jzk1UbaT_A"
-          posterQuality="high"
-          class="rounded-xl h-full w-full aspect-video object-cover row-start-1 col-span-2"
-        />
+        <div class="row-start-1 col-span-2 flex justify-center bg-black rounded-xl drop-shadow-xl">
+          <YouTube
+            id="https://www.youtube.com/watch?v=0Jzk1UbaT_A"
+            posterQuality="high"
+            class="rounded-xl h-full w-full aspect-video object-cover"
+          />
+        </div>
         <div class="flex flex-col gap-8 row-start-1">
           <div class="flex flex-col gap-4">
             <h3 class="font-bold text-2xl">{c3buProduct.title}</h3>

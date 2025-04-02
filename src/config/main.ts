@@ -260,21 +260,21 @@ const pageAbout: PageAbout = {
   content: "",
   people: [
     {
+      image: "carla.jpg",
+      name: "Carla Campopiano",
+      title: "Chief Executive Officer",
+      bio: "Co-founder of PACS LLC, is a dynamic entrepreneur with a rich background in the arts. Her diverse experience spans management, networking, marketing, and  management of change. Her strategic expertise has significantly expanded PACS LLC’s industry presence. Carla’s leadership fosters workforce productivity enhancements, driving innovative solutions and cost-effective results, solidifying PACS LLC’s pioneering status.",
+      links: [{ type: "email", value: "", href: "" }],
+    },
+    {
       image: "pablogarce.jpg",
       name: "Pablo Garce",
       title: "President",
-      bio: "Ea veniam aute do occaecat veniam consectetur ipsum excepteur proident consectetur ullamco eiusmod. Mollit et id consequat exercitation ut officia aliquip commodo deserunt commodo. Pariatur eu duis esse irure excepteur irure deserunt eiusmod incididunt consectetur non velit eu proident.",
+      bio: "Migrated to the US in 1997. Worked in various technical and commercial roles for Mid America Eng., FMC, FMC Technologies, Emerson, ABB and PACS as business development manager and sales and marketing director. Design and developed several downstream oil and gas processing and controlling units for among others grease, metal working fluids and lubricants, including robotic decanting systems and piggable transfer equipment for which holds patents.",
       links: [
         { type: "email", value: "pablo.garce@pacsllc.net", href: "" },
         { type: "linkedin", value: "", href: "" },
       ],
-    },
-    {
-      image: "carla.jpg",
-      name: "Carla Campopiano",
-      title: "Chief Executive Officer",
-      bio: "Sunt labore et ipsum dolor adipisicing. Veniam cupidatat irure culpa est exercitation mollit consectetur tempor anim officia nulla in. Exercitation proident sint qui dolor enim. Nostrud amet non ex sint cillum sunt non et magna deserunt sit aliqua nulla.",
-      links: [{ type: "email", value: "", href: "" }],
     },
     {
       image: "cesar.jpg",
@@ -288,6 +288,11 @@ const pageAbout: PageAbout = {
           href: "mailto:cesar.campopiano@pacsllc.net",
         },
         { type: "phone", value: "+54 3812468054", href: "tel:+543812468054" },
+        {
+          type: "linkedin",
+          value: "cesar-campopiano",
+          href: "https://www.linkedin.com/in/cesar-campopiano-271845103/",
+        },
       ],
     },
   ],
