@@ -57,7 +57,8 @@ const documentTitle = mainConfig.site.shortTitle + (title === undefined ? "" : `
     <meta name="generator" content={Astro.generator} />
     <title>{documentTitle}</title>
   </head>
-  <body class="font-manrope">
+  <body class="font-manrope relative">
+    <div></div>
     <slot />
   </body>
 </html>
