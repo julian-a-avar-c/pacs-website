@@ -7,6 +7,7 @@ import Header from "@/components/layout/header.astro";
 import ArticlesSection from "@/sections/articles-section.astro";
 import HardWorkBanner from "@/sections/hard-work-banner.astro";
 import { YouTube } from "astro-embed";
+import { SendEmail } from "@/components/send-email";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -70,7 +71,7 @@ const arcuProduct = {
         </div>
 
         <div class="grid grid-cols-7 gap-x-4 items-center col-span-2">
-          <input
+          <!-- <input
             type="text"
             class="col-span-5 p-2 px-4 ring-black inset-ring-2 rounded"
             placeholder="Email Address"
@@ -79,14 +80,19 @@ const arcuProduct = {
             class="bg-blue-500 text-white font-semibold col-span-2 p-2 rounded"
           >
             Subscribe
-          </button>
+          </button> -->
+          <SendEmail
+            inputClass="col-span-5 p-2 px-4 ring-black inset-ring-2 rounded"
+            buttonClass="bg-blue-500 text-white font-semibold col-span-2 p-2 rounded hover:ring-2 ring-black hover:cursor-pointer"
+            client:only="react"
+          />
           <p class="col-span-7 italic text-center text-sm">
             Subscribe today for more information
           </p>
         </div>
       </div>
     </section>
-    
+
     <section class="col-[content] flex flex-col gap-8">
       <h2
         class="text-center font-extrabold text-sm uppercase bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-500"
@@ -95,7 +101,9 @@ const arcuProduct = {
       </h2>
 
       <div class="grid grid-cols-3 gap-x-10">
-        <div class="row-start-1 col-span-2 flex justify-center bg-black rounded-xl drop-shadow-xl">
+        <div
+          class="row-start-1 col-span-2 flex justify-center bg-black rounded-xl drop-shadow-xl"
+        >
           <YouTube
             id="https://www.youtube.com/watch?v=0Jzk1UbaT_A"
             posterQuality="high"

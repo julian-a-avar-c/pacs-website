@@ -9,6 +9,8 @@ import icon from 'astro-icon';
 
 import node from '@astrojs/node';
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   // output: "server",
@@ -16,11 +18,12 @@ export default defineConfig({
 
   integrations: [react(), icon()],
 
+  // adapter: node({
+  //   mode: 'middleware'
+  // })
   vite: {
     plugins: [tailwindcss()]
   },
 
-  // adapter: node({
-  //   mode: 'middleware'
-  // })
+  adapter: vercel()
 });
