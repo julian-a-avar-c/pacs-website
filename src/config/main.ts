@@ -103,12 +103,12 @@ type PageAbout = Page & {
 type PageArticles = Page & {
   name: "articles";
   data: {
-    overview: { imageSource: string; summary: string };
+    overview: { imageSource: string; summary?: string };
     name: string;
     href: string;
     title: string;
-    author: string;
-    authorImageSource: string;
+    author?: string;
+    // authorImageSource: string;
     contentImageSource?: string;
     content: string;
     shortDate: { day: string; month: string };
@@ -306,14 +306,14 @@ const pageArticles: PageArticles = {
     {
       overview: {
         imageSource: "/ilma.jpeg",
-        summary: "description",
+        // summary: "description",
       },
       name: "ilma-2024",
       href: "/articles/2024-09-30-ilma-2024",
       completeDate: "2024-09-30",
       title: "ILMA 2024",
-      author: "Pablo Garce",
-      authorImageSource: "/pablogarce.jpg",
+      // author: "Pablo Garce",
+      // authorImageSource: "/pablogarce.jpg",
       content: "YOUTUBE VIDEO",
       shortDate: { day: "30", month: "Sep" },
       longDate: "September 30th, 2024",

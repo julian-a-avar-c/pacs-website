@@ -46,24 +46,24 @@ const {
         </h4>
         <p class="self-center text-base">{longDate}</p>
       </div>
-      <div class="flex items-center gap-4 text-base">
+      {(authorImageSource || author) && <div class="flex items-center gap-4 text-base">
         <img
           src={authorImageSource}
           class="size-8 rounded-full border-zinc-300"
         />
         <p class="">{author}</p>
-      </div>
+      </div>}
     </div>
     <p class="flex-none">
       {description}
     </p>
-    <div class="grow flex justify-end items-end">
+    {description && <div class="grow flex justify-end items-end">
       <a
         href=""
         class="px-4 py-2 -skew-x-6 rounded-sm bg-zinc-900 text-white underline-offset-2 font-semibold shadow-md ring-0 hover:ring-2 ring-zinc-200"
       >
         read more
       </a>
-    </div>
+    </div>}
   </div>
 </div>
