@@ -14,7 +14,7 @@ const pageConfig = mainConfig.pagesByName["articles"];
       article.expirationDate === undefined ||
       (article.expirationDate && article.expirationDate > DateTime.now())
   ) && (
-    <section class="col-[fullbleed] grid grid-cols-[2fr_5fr]">
+    <section class="col-[fullbleed] flex flex-col lg:grid lg:grid-cols-[2fr_5fr]">
       <div class="bg-zinc-900 text-white p-16 flex flex-col gap-8">
         <h3 class="text-6xl font-light">Articles</h3>
         <p class="text-lg/6 font-semilight text-justify">
@@ -31,7 +31,10 @@ const pageConfig = mainConfig.pagesByName["articles"];
           <Icon name="fa6-solid:arrow-right-long" />
         </a>
       </div>
-      <div class="grid grid-cols-3 p-16 gap-16 bg-[url('/IMG_2256.JPEG')] bg-fixed bg-no-repeat bg-cover bg-clip-padding bg-[center_80%]">
+      <div class:list={[
+        "flex flex-col lg:grid lggrid-cols-3",
+        "p-16 gap-16 bg-[url('/IMG_2256.JPEG')] bg-fixed bg-no-repeat bg-cover bg-clip-padding bg-[center_80%]"
+      ]}>
         {pageConfig.data.map(
           (article) =>
           // @ts-ignore This comparison appears to be unintentional because the types 'DateTime<boolean> | undefined' and '(params?: RawCreateParams) => ZodUndefined' have no overlap.ts(2367)

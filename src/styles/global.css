@@ -50,12 +50,12 @@
 }
 @media (width >= 40rem /* 640px */) {
   :root {
-    --content-width: 40rem /* 640px */;
+    --content-width: 100% /* 40rem */ /* 640px */;
   }
 }
 @media (width >= 48rem /* 768px */) {
   :root {
-    --content-width: 48rem /* 768px */;
+    --content-width: 100% /* 48rem */ /* 768px */;
   }
 }
 @media (width >= 64rem /* 1024px */) {
@@ -81,19 +81,20 @@ body {
     [header-end main-start] auto
     [main-end footer-start] auto
     [footer-end];
+  width: 100vw;
   --gap: calc((100% - var(--content-width)) / 2);
 
   grid-template-columns:
     [fullbleed-start leftbleed-start left-gap-start]
-    /* 1fr */
+    1fr
     [left-gap-end content-start left-content-start]
     /* calc(var(--content-width) / 2) */
-    repeat(6, calc(var(--content-width) / 12))
+    calc(var(--content-width) / 2)
     [left-content-end leftbleed-end rightbleed-start right-content-start]
     /* calc(var(--content-width) / 2) */
-    repeat(6, calc(var(--content-width) / 12))
+    calc(var(--content-width) / 2)
     [right-content-end content-end right-gap-start]
-    /* 1fr */
+    1fr
     [right-gap-end rightbleed-end fullbleed-end];
   /* sm */
   @media (width >= 40rem /* 640px */) {
@@ -104,15 +105,15 @@ body {
   /* lg */
   @media (width >= 64rem /* 1024px */) {
     grid-template-columns:
-    [fullbleed-start leftbleed-start left-gap-start] 1fr
-    [left-gap-end content-start left-content-start]
-    /* calc(var(--content-width) / 2) */
-    repeat(6, calc(var(--content-width) / 12))
-    [left-content-end leftbleed-end rightbleed-start right-content-start]
-    /* calc(var(--content-width) / 2) */
-    repeat(6, calc(var(--content-width) / 12))
-    [right-content-end content-end right-gap-start] 1fr
-    [right-gap-end rightbleed-end fullbleed-end];
+      [fullbleed-start leftbleed-start left-gap-start] 1fr
+      [left-gap-end content-start left-content-start]
+      /* calc(var(--content-width) / 2) */
+      calc(var(--content-width) / 2)
+      [left-content-end leftbleed-end rightbleed-start right-content-start]
+      /* calc(var(--content-width) / 2) */
+      calc(var(--content-width) / 2)
+      [right-content-end content-end right-gap-start] 1fr
+      [right-gap-end rightbleed-end fullbleed-end];
   }
   /* xl */
   @media (width >= 80rem /* 1280px */) {
