@@ -1,21 +1,20 @@
 ---
+import type { DateTime } from "luxon";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
   imageSource: string;
   title: string;
-  shortDate: { day: string; month: string };
-  longDate: string;
-  author: string;
-  description: string;
+  creationDate: DateTime;
+  author?: string;
+  description?: string;
   readMoreHref: string;
 };
 
 const {
   imageSource,
   title,
-  shortDate,
-  longDate,
+  creationDate,
   author,
   description,
   readMoreHref,
@@ -35,9 +34,9 @@ const {
     <div class="col-[header] flex flex-col">
       <div class="font-bold text-xl">{title}</div>
       <div class="flex font-medium gap-2">
-        <div>{author}</div>
-        <div>&middot;</div>
-        <div>{longDate}</div>
+        {author && (<div>{author}</div>
+        <div>&middot;</div>)}
+        <div>{creationDate.toFormat("LLL dd, yyyy")}</div>
       </div>
     </div>
     <div class="col-[rest] self-center text-lg flex flex-col h-full">

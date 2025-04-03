@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 export const site = {
   title: "Processing & Automation Consultancy Solutions",
   shortTitle: "PACS LLC",
@@ -108,12 +110,11 @@ type PageArticles = Page & {
     href: string;
     title: string;
     author?: string;
-    // authorImageSource: string;
+    authorImageSource?: string;
     contentImageSource?: string;
     content: string;
-    shortDate: { day: string; month: string };
-    longDate: string;
-    completeDate: string;
+    creationDate: DateTime;
+    expirationDate?: DateTime;
   }[];
 };
 
@@ -310,13 +311,12 @@ const pageArticles: PageArticles = {
       },
       name: "ilma-2024",
       href: "/articles/2024-09-30-ilma-2024",
-      completeDate: "2024-09-30",
       title: "ILMA 2024",
       // author: "Pablo Garce",
       // authorImageSource: "/pablogarce.jpg",
       content: "YOUTUBE VIDEO",
-      shortDate: { day: "30", month: "Sep" },
-      longDate: "September 30th, 2024",
+      creationDate: DateTime.fromISO("2024-09-30"),
+      expirationDate: DateTime.fromISO("2025-01-01"),
     },
     {
       overview: {
@@ -326,13 +326,12 @@ const pageArticles: PageArticles = {
       },
       name: "nlgi-2024",
       href: "/articles/2024-06-10-nlgi-2024",
-      completeDate: "2024-06-10",
       title: "NLGI 2024",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
       contentImageSource: "/NLGI-1.jpg",
-      shortDate: { day: "10", month: "Jun" },
-      longDate: "June 10th, 2024",
+      creationDate: DateTime.fromISO("2024-06-10"),
+      expirationDate: DateTime.fromISO("2025-01-01"),
       content: `
         <p>Join us at the National Lubricating Grease Institute Annual Meeting in San Antonio!</p>
         <p>We are delighted to announce that our expert, Pablo Garce, will present three essential talks at the National Lubricating Grease Institute Annual Meeting.</p>
@@ -359,12 +358,10 @@ const pageArticles: PageArticles = {
       },
       name: "sustainable-challanges",
       href: "/articles/2024-03-31-sustainable-challanges",
-      completeDate: "2024-03-31",
       title: "Navigating Challenges with Sustainable Solutions",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
-      shortDate: { day: "31", month: "Mar" },
-      longDate: "March 31st, 2024",
+      creationDate: DateTime.fromISO("2024-03-31"),
       content: `
         IMG
         <p>In project management, the pursuit of improvement while concurrently seeking cost-effective solutions presents a nuanced challenge, especially in oil related industries where efficiency is paramount. The quest for better outcomes must be balanced with the imperative to contain costs, requiring a delicate approach.</p>
@@ -387,12 +384,11 @@ const pageArticles: PageArticles = {
       },
       name: "lubricant-expo-2024",
       href: "/articles/2024-03-15-lubricant-expo-2024",
-      completeDate: "2024-03-15",
       title: "Lubricant Expo 2024",
       author: "Pablo Garce",
       authorImageSource: "/pablogarce.jpg",
-      shortDate: { day: "15", month: "Mar" },
-      longDate: "March 15th, 2024",
+      creationDate: DateTime.fromISO("2024-03-15"),
+      expirationDate: DateTime.fromISO("2025-01-01"),
       contentImageSource: "/post001.jpg",
       content: `
       <p><strong>Lubricant Expo is North Americas newest exhibition and conference, connecting lubricant solution providers with the full range of end-user buyers, as well as the entire chemical and equipment supply chain with thousands of engineers and executives in attendance.</strong></p>

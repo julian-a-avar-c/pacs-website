@@ -1,22 +1,21 @@
 ---
 import { twMerge } from "tailwind-merge";
+import { DateTime } from "luxon";
 
 type Props = {
   imageSource: string;
   title: string;
-  shortDate: { day: string; month: string };
-  longDate: string;
-  author: string;
-  authorImageSource: string;
-  description: string;
+  creationDate: DateTime;
+  author?: string;
+  authorImageSource?: string;
+  description?: string;
   readMoreHref: string;
 };
 
 const {
   imageSource,
   title,
-  shortDate,
-  longDate,
+  creationDate,
   author,
   authorImageSource,
   description,
@@ -30,8 +29,8 @@ const {
   <div
     class="bg-zinc-900 aspect-square w-[2.5rem] text-white grid grid-rows-2 items-center justify-center p-1 rounded-full absolute right-4 top-4 flex-none"
   >
-    <div class="text-lg pt-[0.25rem]">{shortDate.day}</div>
-    <div class="text-xs -mt-[0.25rem]">{shortDate.month}</div>
+    <div class="text-lg pt-[0.25rem]">{creationDate.day}</div>
+    <div class="text-xs -mt-[0.25rem]">{creationDate.monthShort}</div>
   </div>
   <img
     alt=""
@@ -44,26 +43,35 @@ const {
         <h4 class="font-bold text-center text-2xl">
           {title}
         </h4>
-        <p class="self-center text-base">{longDate}</p>
+        <!-- TODO: Add the st, nd, and th -->
+        <p class="self-center text-base">{creationDate.toFormat("LLLL dd, yyyy")}</p>
       </div>
-      {(authorImageSource || author) && <div class="flex items-center gap-4 text-base">
-        <img
-          src={authorImageSource}
-          class="size-8 rounded-full border-zinc-300"
-        />
-        <p class="">{author}</p>
-      </div>}
+      {
+        (authorImageSource || author) && (
+          <div class="flex items-center gap-4 text-base">
+            <img
+              src={authorImageSource}
+              class="size-8 rounded-full border-zinc-300"
+            />
+            <p class="">{author}</p>
+          </div>
+        )
+      }
     </div>
     <p class="flex-none">
       {description}
     </p>
-    {description && <div class="grow flex justify-end items-end">
-      <a
-        href=""
-        class="px-4 py-2 -skew-x-6 rounded-sm bg-zinc-900 text-white underline-offset-2 font-semibold shadow-md ring-0 hover:ring-2 ring-zinc-200"
-      >
-        read more
-      </a>
-    </div>}
+    {
+      description && (
+        <div class="grow flex justify-end items-end">
+          <a
+            href=""
+            class="px-4 py-2 -skew-x-6 rounded-sm bg-zinc-900 text-white underline-offset-2 font-semibold shadow-md ring-0 hover:ring-2 ring-zinc-200"
+          >
+            read more
+          </a>
+        </div>
+      )
+    }
   </div>
 </div>
