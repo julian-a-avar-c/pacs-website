@@ -219,6 +219,9 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
+      '@iconify/react':
+        specifier: ^5.2.1
+        version: 5.2.1(react@19.0.0)
       '@types/luxon':
         specifier: ^3.6.0
         version: 3.6.0
@@ -772,6 +775,11 @@ packages:
 
   '@iconify-json/uil@1.2.3':
     resolution: {integrity: sha512-if91+UBhDQc6glPsIaXecGIcXnbQZfEO4Gdv89TV2xQ+V5e9GWbY5rNl2fsKZd8COsRQ5lRQAKimVQVL0CZZVg==}
+
+  '@iconify/react@5.2.1':
+    resolution: {integrity: sha512-37GDR3fYDZmnmUn9RagyaX+zca24jfVOMY8E1IXTqJuE8pxNtN51KWPQe3VODOWvuUurq7q9uUu3CFrpqj5Iqg==}
+    peerDependencies:
+      react: '>=16'
 
   '@iconify/tools@4.1.1':
     resolution: {integrity: sha512-Hybu/HGhv6T8nLQhiG9rKx+ekF7NNpPOEQAy7JRSKht3s3dcFSsPccYzk24Znc9MTxrR6Gak3cg6CPP5dyvS2Q==}
@@ -5101,6 +5109,11 @@ snapshots:
   '@iconify-json/uil@1.2.3':
     dependencies:
       '@iconify/types': 2.0.0
+
+  '@iconify/react@5.2.1(react@19.0.0)':
+    dependencies:
+      '@iconify/types': 2.0.0
+      react: 19.0.0
 
   '@iconify/tools@4.1.1':
     dependencies:

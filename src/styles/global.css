@@ -13,7 +13,7 @@
 }
 
 :root {
-  --content-width: 100%;
+  --content-width: 90%;
   --background: white; /* oklch(1 0 0); */
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -50,12 +50,12 @@
 }
 @media (width >= 40rem /* 640px */) {
   :root {
-    --content-width: 100% /* 40rem */ /* 640px */;
+    --content-width: 90% /* 40rem */ /* 640px */;
   }
 }
 @media (width >= 48rem /* 768px */) {
   :root {
-    --content-width: 100% /* 48rem */ /* 768px */;
+    --content-width: 90% /* 48rem */ /* 768px */;
   }
 }
 @media (width >= 64rem /* 1024px */) {

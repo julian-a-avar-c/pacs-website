@@ -1,6 +1,7 @@
 ---
 import * as mainConfig from "@/config/main";
 import { Icon } from "astro-icon/components";
+import { NavSheet } from "../nav-sheet";
 
 export function toAllUpperCase(s: string) {
   return s
@@ -45,10 +46,10 @@ function toTitleCase(s: string): string {
     class="row-[banner] col-[fullbleed] grid bg-indigo-700 grid-rows-1 grid-cols-subgrid relative"
   >
     <div
-      class="col-[content] text-white font-bold text-xs py-2 flex flex-col md:flex-row justify-between items-center"
+      class="col-[content] text-white font-bold text-xs py-2 flex flex-col gap-y-2 lg:flex-row justify-between items-center"
     >
       <h1>{toAllUpperCase(mainConfig.site.title)}</h1>
-      <div class="flex gap-x-4 [&_a]:hover:underline">
+      <div class="hidden gap-x-4 [&_a]:hover:underline lg:flex">
         <a href={phone.href} class="items-center flex gap-x-1">
           <Icon name={phone.icon} />
           <span>{phone.value}</span>
@@ -84,7 +85,7 @@ function toTitleCase(s: string): string {
         <a class="text-2xl h-full py-4" href="/">
           <img alt="" src="/pacs_logo_extrasmall.png" class="h-full" />
         </a>
-        <ul class="flex gap-6 text-base font-bold">
+        <ul class="gap-6 text-base font-bold hidden lg:flex">
           {
             mainConfig.pages
               .filter((page) => page.name != "index")
@@ -100,6 +101,7 @@ function toTitleCase(s: string): string {
         </ul>
       </div>
       <a
+        class="hidden lg:block"
         href={mainConfig.site.links.find((link) => link.type === "phone")!.href}
       >
         <button
@@ -108,6 +110,7 @@ function toTitleCase(s: string): string {
           CALL SALES
         </button>
       </a>
+      <NavSheet class="block lg:hidden hover:cursor-pointer" client:only="react" />
     </nav>
   </div>
 </header>
