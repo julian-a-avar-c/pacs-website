@@ -32,30 +32,6 @@ const { article } = Astro.params;
 const articleData = pageConfig.data.find((a) => a.href.includes(article))!;
 ---
 
-<!-- <section class="col-[content] flex flex-col gap-16">
-  {title && <h2 class="text-center font-extrabold text-4xl">{title}</h2>}
-  
-  <div class="flex self-center gap-12">
-    {
-      cards.map((card) => (
-        <div id={`${card.title}`} class=" w-96 rounded-lg shadow-md p-8 flex flex-col gap-2">
-          <div class="text-2xl flex gap-4 items-center">
-            <Icon name={card.icon} title="xxx" class="size-10" />
-            <h4 class="font-bold">{card.title}</h4>
-          </div>
-  
-          <div class="text-lg">{card.description}</div>
-  
-          {false && (
-            <hr class="bg-black border-t-2" />
-
-            <div>footer</div>
-          )}
-        </div>
-      ))
-    }
-  </div>
-</section> -->
 <Layout>
   <Header />
 
@@ -85,16 +61,30 @@ const articleData = pageConfig.data.find((a) => a.href.includes(article))!;
         </h2>
         <div class="flex flex-col gap-16">
           <div class="flex gap-4 items-center text-xl font-semibold">
-            <img
-              src={articleData.authorImageSource}
-              class="size-8 rounded-full border-zinc-300"
-            />
-            <p class="">{articleData.author} &middot; {articleData.longDate}</p>
+            {
+              articleData.authorImageSource && (
+                <img
+                  src={articleData.authorImageSource}
+                  class="size-8 rounded-full border-zinc-300"
+                />
+              )
+            }
+            <p class="">
+              {
+                articleData.author && (
+                  <>
+                    {articleData.author}
+                    &middot;
+                  </>
+                )
+              }
+              {articleData.creationDate.toFormat("LLLL dd, yyyy")}
+            </p>
           </div>
-          <!-- <YouTube id="https://youtu.be/sqCxLhu8CbI"/> -->
           <div
             class="text-lg [&_ol]:list-decimal [&_ul]:list-disc [&_a]:underline [&_ol]:list-inside [&_ul]:list-inside flex flex-col gap-4 max-w-[80ch] text-justify"
           >
+            <YouTube id="https://youtu.be/sqCxLhu8CbI"/>
             <Fragment set:html={articleData.content} />
           </div>
         </div>
