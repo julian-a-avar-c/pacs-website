@@ -15,10 +15,16 @@ export const POST: APIRoute = async ({ request }) => {
 
     const res = await resend.emails.send({
       // from: 'onboarding@resend.dev',
-      from: "info@marketing.pacsllc.net",
+      from: "noreply@marketing.pacsllc.net",
       to: recipient,
-      subject: 'View RDU',
-      html: '<p>Please click <a href="">HERE</a> to view the promotional video for the RDU.</p>'
+      subject: 'View PACS\' RDU Video Now',
+      html: `
+      <p>Please click <a href="">HERE</a> to view the promotional video for the RDU.</p>
+      <p>Sincerely,</p>
+      <p>
+      The PACS Team
+      </p>
+      `
     });
     console.log(res)
 
