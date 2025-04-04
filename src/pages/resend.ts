@@ -19,10 +19,17 @@ export const POST: APIRoute = async ({ request }) => {
       to: recipient,
       subject: 'View PACS\' RDU Video Now',
       html: `
-      <p>Please click <a href="">HERE</a> to view the promotional video for the RDU.</p>
+      <p>Welcome to the pack!</p>
+      <p></p>
+      <p>To see PACS's RDU promotional video, please click <a href="">HERE</a>.</p>
+      <p></p>
+      <p></p>
       <p>Sincerely,</p>
+      <p>The PACS Team</p>
       <p>
-      The PACS Team
+        Email: <a href="mailto:info@pacsllc.net">info@pacsllc.net</a>
+        <br />
+        Tel: <a href="tel:+17734749701">(773) 474-9701</a>
       </p>
       `
     });
