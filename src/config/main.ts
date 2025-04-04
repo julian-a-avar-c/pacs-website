@@ -29,7 +29,7 @@ export const site = {
       value: "info@pacsllc.net",
       href: "mailto:info@pacsllc.net",
     },
-    { type: "location", icon: "fa6-solid:globe", value: "NY / NJ" }, // FIX
+    { type: "location", icon: "fa6-solid:map-location", value: "NY / NJ" }, // FIX
   ],
 };
 

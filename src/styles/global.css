@@ -82,19 +82,22 @@ body {
     [main-end footer-start] auto
     [footer-end];
   width: 100vw;
-  --gap: calc((100% - var(--content-width)) / 2);
+  --gap: calc(calc(100% - var(--content-width)) / 2);
 
   grid-template-columns:
     [fullbleed-start leftbleed-start left-gap-start]
-    1fr
+    var(--gap)
     [left-gap-end content-start left-content-start]
     /* calc(var(--content-width) / 2) */
-    calc(var(--content-width) / 2)
+    /* calc(var(--content-width) / 2) */
+    1fr
     [left-content-end leftbleed-end rightbleed-start right-content-start]
     /* calc(var(--content-width) / 2) */
-    calc(var(--content-width) / 2)
-    [right-content-end content-end right-gap-start]
+    /* calc(var(--content-width) / 2) */
     1fr
+    [right-content-end content-end right-gap-start]
+    /* 1fr */
+    var(--gap)
     [right-gap-end rightbleed-end fullbleed-end];
   /* sm */
   @media (width >= 40rem /* 640px */) {
@@ -105,14 +108,20 @@ body {
   /* lg */
   @media (width >= 64rem /* 1024px */) {
     grid-template-columns:
-      [fullbleed-start leftbleed-start left-gap-start] 1fr
+      [fullbleed-start leftbleed-start left-gap-start]
+      /* 1fr */
+      var(--gap)
       [left-gap-end content-start left-content-start]
       /* calc(var(--content-width) / 2) */
-      calc(var(--content-width) / 2)
+      /* calc(var(--content-width) / 2) */
+      1fr
       [left-content-end leftbleed-end rightbleed-start right-content-start]
       /* calc(var(--content-width) / 2) */
-      calc(var(--content-width) / 2)
-      [right-content-end content-end right-gap-start] 1fr
+      /* calc(var(--content-width) / 2) */
+      1fr
+      [right-content-end content-end right-gap-start]
+      /* 1fr */
+      var(--gap)
       [right-gap-end rightbleed-end fullbleed-end];
   }
   /* xl */
@@ -152,15 +161,6 @@ body > header {
   background-color: transparent;
   /* position: sticky; */
 }
-/* body > header:nth-child(0) {
-  grid-row: banner;
-  grid-column: fullbleed-start / fullbleed-end;
-} */
-/* body > header:nth-child(1) {
-  grid-row: nav;
-  grid-column-start: content-start;
-  grid-column-end: content-end;
-} */
 
 body > footer {
   grid-column: fullbleed;
@@ -168,47 +168,6 @@ body > footer {
   /* display: grid; */
   /* grid-templates-columns: ; */
 }
-
-/* body {
-  display: grid;
-  grid-template-rows:
-    [header-start] 2em
-    [header-end main-start] auto
-    [main-end footer-start] auto
-    [footer-end];
-  --gap: calc((100% - var(--content-width))/2);
-  grid-template-columns:
-    [fullbleed-start left-gap-start] var(--gap) [left-gap-end content-start] var(--content-width)
-    [content-end right-gap-start] var(--gap) [right-gap-end fullbleed-end];
-}
-body > header {
-  display: grid;
-  grid-column: header;
-  grid-row: content;
-  grid-template-rows:
-    [banner-start] auto
-    [banner-end nav-start] auto
-    [nav-end];
-  grid-template-columns: subgrid;
-}
-body > main {
-  display: grid;
-  grid-column: main;
-  grid-row: fullbleed;
-  grid-template-rows:
-    [hero-start] auto
-    [hero-end about-cards-start] auto
-    [about-cards-end services-start] auto
-    [services-end mission-start] auto
-    [mission-end];
-  grid-template-columns: subgrid;
-}
-body > footer {
-  display: grid;
-  grid-column: footer;
-  grid-row: content;
-  /* grid-templates-columns: ; 
-} */
 
 .dark {
   --background: oklch(0.141 0.005 285.823);

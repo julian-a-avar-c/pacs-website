@@ -21,7 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
       html: `
       <p>Welcome to the pack!</p>
       <p></p>
-      <p>To see PACS's RDU promotional video, please click <a href="">HERE</a>.</p>
+      <p>To see PACS's RDU promotional video, please click <a href="https://youtu.be/fbv5_lv5TTk?si=knrPmu8CC46w69H7">HERE</a>.</p>
       <p></p>
       <p></p>
       <p>Sincerely,</p>
